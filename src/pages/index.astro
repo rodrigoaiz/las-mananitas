@@ -1,0 +1,106 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Survey from "../components/Survey";
+import Statistics from "../components/Statistics";
+import TopVersions from "../components/TopVersions.astro";
+import VideoGallery from "../components/VideoGallery.astro";
+---
+
+<Layout title="Las Mañanitas - El Debate Definitivo">
+  <main>
+    <!-- Hero Section -->
+    <Hero />
+
+    <!-- Survey Section (React Island) -->
+    <section id="survey">
+      <Survey client:load />
+    </section>
+
+    <!-- Statistics Section (React Island) -->
+    <Statistics client:load />
+
+    <!-- Top Versions Section -->
+    <TopVersions />
+
+    <!-- Video Gallery Section -->
+    <VideoGallery />
+
+    <!-- Call to Action / Petition -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <div
+          class="bg-gradient-to-br from-pink-500 via-orange-500 to-yellow-500 rounded-[3rem] p-12 sm:p-16 shadow-2xl shadow-pink-500/20 text-white"
+        >
+          <h2 class="text-4xl sm:text-6xl font-black mb-8 tracking-tight">
+            ¿Hacemos esto oficial?
+          </h2>
+          <p class="text-xl sm:text-2xl mb-12 font-medium opacity-90">
+            Únete a los miles de mexicanos que quieren estandarizar Las
+            Mañanitas para evitar más silencios incómodos.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-6 justify-center">
+            <button
+              class="bg-white text-pink-600 px-10 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-all duration-300 shadow-xl"
+            >
+              Firmar la Petición
+            </button>
+            <button
+              class="bg-white/20 backdrop-blur-md border border-white/40 text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-white/30 transition-all duration-300"
+            >
+              Compartir Debate
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 px-4 border-t border-slate-200">
+      <div class="max-w-6xl mx-auto text-center">
+        <p class="text-2xl font-black text-slate-900 mb-4">🎂 Las Mañanitas</p>
+        <p class="text-slate-500 font-medium mb-8">
+          Un experimento social para resolver el debate más grande de México.
+        </p>
+        <div class="flex justify-center gap-8 mb-8">
+          <a
+            href="#"
+            class="text-slate-400 hover:text-pink-500 transition-colors font-bold uppercase tracking-widest text-sm"
+            >Twitter</a
+          >
+          <a
+            href="#"
+            class="text-slate-400 hover:text-pink-500 transition-colors font-bold uppercase tracking-widest text-sm"
+            >Instagram</a
+          >
+          <a
+            href="#"
+            class="text-slate-400 hover:text-pink-500 transition-colors font-bold uppercase tracking-widest text-sm"
+            >TikTok</a
+          >
+        </div>
+        <p class="text-slate-400 text-sm font-medium">
+          &copy; {new Date().getFullYear()} Las Mañanitas - El Debate Definitivo.
+          Hecho con ❤️ y mucha confusión.
+        </p>
+      </div>
+    </footer>
+  </main>
+</Layout>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-in {
+    animation: fade-in 0.5s ease-out;
+  }
+</style>

@@ -1,0 +1,86 @@
+---
+// Video gallery with popular Las Mañanitas versions
+const videos = [
+  {
+    title: "Vicente Fernández",
+    description: "La versión clásica del Charro de Huentitán",
+    youtubeId: "y8HTr-F-FVM",
+    thumbnail: "https://img.youtube.com/vi/y8HTr-F-FVM/maxresdefault.jpg"
+  },
+  {
+    title: "Pedro Infante",
+    description: "El ídolo de México cantando Las Mañanitas",
+    youtubeId: "KQwzGPjAUXI",
+    thumbnail: "https://img.youtube.com/vi/KQwzGPjAUXI/maxresdefault.jpg"
+  },
+  {
+    title: "Mariachi Vargas",
+    description: "El mejor mariachi del mundo",
+    youtubeId: "BjSnj-LfZRg",
+    thumbnail: "https://img.youtube.com/vi/BjSnj-LfZRg/maxresdefault.jpg"
+  },
+  {
+    title: "Luis Miguel",
+    description: "El Sol de México con su versión romántica",
+    youtubeId: "QLt0lerdgKs",
+    thumbnail: "https://img.youtube.com/vi/QLt0lerdgKs/maxresdefault.jpg"
+  }
+];
+---
+
+<section class="py-24 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-5xl sm:text-6xl font-black text-center mb-4 text-slate-900 tracking-tight">
+      🎬 Versiones Legendarias
+    </h2>
+    <p class="text-center text-slate-500 mb-16 text-xl font-medium">
+      Escucha cómo los grandes lo cantan (y nota las diferencias)
+    </p>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {videos.map((video) => (
+        <a 
+          href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group relative bg-white/60 backdrop-blur-md border-2 border-white/40 rounded-3xl overflow-hidden hover:scale-105 transition-all duration-500 shadow-lg shadow-slate-200/20"
+        >
+          <!-- Thumbnail -->
+          <div class="relative aspect-video overflow-hidden">
+            <img 
+              src={video.thumbnail} 
+              alt={video.title}
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            <!-- Play button overlay -->
+            <div class="absolute inset-0 bg-pink-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+              <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-2xl transform scale-0 group-hover:scale-100 transition-transform duration-500 delay-100">
+                <svg class="w-8 h-8 text-pink-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Info -->
+          <div class="p-6">
+            <h3 class="text-xl font-black text-slate-900 mb-1 group-hover:text-pink-600 transition-colors">
+              {video.title}
+            </h3>
+            <p class="text-slate-500 font-medium">
+              {video.description}
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- Call to action -->
+    <div class="mt-16 text-center">
+      <p class="text-slate-600 text-xl font-medium">
+        ¿Notaste las diferencias? 
+        <span class="text-pink-600 font-bold">¡Cada uno la canta diferente!</span>
+      </p>
+    </div>
+  </div>
+</section>
