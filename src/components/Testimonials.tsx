@@ -13,22 +13,31 @@ export default function Testimonials({ initialLimit = 6 }: TestimonialsProps) {
   const [hasMore, setHasMore] = useState(true);
 
   const fetchSignatures = async (currentLimit: number) => {
-    const data = await getSignatures(currentLimit + 1);
-    if (data.length <= currentLimit) {
-      setHasMore(false);
-      setSignatures(data);
-    } else {
-      setHasMore(true);
-      setSignatures(data.slice(0, currentLimit));
+    try {
+      const data = await getSignatures(currentLimit + 1);
+      console.log(`Fetched ${data.length} signatures (limit: ${currentLimit})`);
+      
+      if (data.length <= currentLimit) {
+        setHasMore(false);
+        setSignatures(data);
+      } else {
+        setHasMore(true);
+        setSignatures(data.slice(0, currentLimit));
+      }
+    } catch (error) {
+      console.error("Error in Testimonials component:", error);
+      // getSignatures already returns placeholders on error, but we ensure state is updated
+    } finally {
+      setLoading(false);
+      setLoadingMore(false);
     }
-    setLoading(false);
-    setLoadingMore(false);
   };
 
   useEffect(() => {
     fetchSignatures(limit);
 
     const handleSignatureSubmitted = () => {
+      console.log("Signature submitted event received, refreshing...");
       setTimeout(() => fetchSignatures(limit), 1000);
     };
 
@@ -51,7 +60,12 @@ export default function Testimonials({ initialLimit = 6 }: TestimonialsProps) {
     );
   }
 
-  if (signatures.length === 0) return null;
+  // If we have no signatures and we're not loading, something is wrong
+  // but getSignatures should have returned placeholders.
+  if (signatures.length === 0 && !loading) {
+    console.warn("No signatures found even after loading. This shouldn't happen with fallback.");
+    return null;
+  }
 
   return (
     <div className="mt-32">
