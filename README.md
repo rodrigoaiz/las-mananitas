@@ -20,7 +20,7 @@ Un sitio web moderno e interactivo que aborda el problema cultural de las difere
 
 ## 📋 Requisitos Previos
 
-- Node.js 18+ 
+- Node.js 18+
 - npm o pnpm
 - Una cuenta de Firebase (gratuita)
 
@@ -80,25 +80,69 @@ En Firebase Console > Firestore Database > Rules, usa estas reglas:
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Allow read access to statistics
+    // Allow read access to statistics (Read-only for everyone)
     match /statistics/{document=**} {
       allow read: if true;
-      allow write: if true;
+      allow write: if false; 
     }
     
-    // Allow write to votes
+    // Allow write to votes (Create-only, no read/update/delete)
     match /votes/{document=**} {
       allow read: if false;
       allow create: if true;
+      allow update, delete: if false;
     }
 
-    // Allow read/write to signatures
+    // Allow read/create to signatures (No update/delete)
     match /signatures/{document=**} {
       allow read: if true;
       allow create: if true;
+      allow update, delete: if false;
     }
   }
 }
+```
+
+### 5. Configuración de Seguridad (Cloud Functions)
+
+Para que las estadísticas se actualicen de forma segura sin permitir que los usuarios las modifiquen directamente, debes usar una **Firebase Cloud Function**. 
+
+Crea un archivo `index.js` en tu carpeta `functions/` de Firebase con el siguiente código:
+
+```javascript
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+admin.initializeApp();
+
+exports.aggregateVotes = functions.firestore
+    .document('votes/{voteId}')
+    .onCreate(async (snap, context) => {
+        const voteData = snap.data();
+        const version = voteData.version;
+        const statsRef = admin.firestore().doc('statistics/global');
+
+        return admin.firestore().runTransaction(async (transaction) => {
+            const statsDoc = await transaction.get(statsRef);
+            
+            if (!statsDoc.exists) {
+                return transaction.set(statsRef, {
+                    totalVotes: 1,
+                    versionCounts: { [version]: 1 },
+                    lastUpdated: admin.firestore.FieldValue.serverTimestamp()
+                });
+            }
+
+            const currentStats = statsDoc.data();
+            const newCounts = { ...currentStats.versionCounts };
+            newCounts[version] = (newCounts[version] || 0) + 1;
+
+            return transaction.update(statsRef, {
+                totalVotes: currentStats.totalVotes + 1,
+                versionCounts: newCounts,
+                lastUpdated: admin.firestore.FieldValue.serverTimestamp()
+            });
+        });
+    });
 ```
 
 ### 5. Variables de Entorno (Vercel)
