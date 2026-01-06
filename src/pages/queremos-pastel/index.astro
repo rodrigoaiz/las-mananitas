@@ -1,0 +1,62 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const chismes = await getCollection("chismecito");
+// Sort by date descending
+chismes.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout title="¡Queremos Pastel! - Curiosidades de Las Mañanitas">
+  <main class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto text-center mb-16">
+      <h1 class="text-6xl sm:text-7xl font-black mb-6 tracking-tight">
+        🍰 ¡Queremos <span
+          class="bg-gradient-to-r from-pink-600 via-orange-500 to-yellow-500 bg-clip-text text-transparent"
+          >Pastel</span
+        >!
+      </h1>
+      <p class="text-2xl text-slate-600 font-medium max-w-2xl mx-auto">
+        Una rebanada de historia y curiosidades sobre la canción más famosa de
+        México.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {
+        chismes.map((chisme) => (
+          <a
+            href={`/queremos-pastel/${chisme.slug}`}
+            class="group bg-white/60 backdrop-blur-md border-2 border-white/40 rounded-[2.5rem] p-8 hover:scale-105 transition-all duration-500 shadow-xl shadow-pink-200/10 flex flex-col"
+          >
+            <div class="text-6xl mb-6 group-hover:animate-bounce transition-transform">
+              {chisme.data.emoji}
+            </div>
+            <h2 class="text-2xl font-black text-slate-900 mb-4 group-hover:text-pink-600 transition-colors">
+              {chisme.data.title}
+            </h2>
+            <p class="text-slate-500 font-medium mb-6 flex-1">
+              {chisme.data.description}
+            </p>
+            <div class="flex items-center gap-2 text-pink-600 font-black uppercase tracking-widest text-sm">
+              Leer más
+              <svg
+                class="w-4 h-4 transform group-hover:translate-x-2 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </main>
+</Layout>

@@ -8,6 +8,7 @@ const {
   title,
   description = "El sitio definitivo sobre el eterno debate de Las Mañanitas",
 } = Astro.props;
+import Header from "../components/Header.astro";
 import "../styles/global.css";
 ---
 
@@ -43,6 +44,7 @@ import "../styles/global.css";
   <body
     class="bg-gradient-to-br from-orange-50 via-pink-50 to-yellow-50 text-slate-900 min-h-screen selection:bg-pink-200 selection:text-pink-900"
   >
+    <Header />
     <slot />
   </body>
 </html>
