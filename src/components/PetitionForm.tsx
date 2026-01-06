@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { submitSignature } from '../lib/firebase';
+import { submitSignature } from '../lib/supabase';
 
 export default function PetitionForm() {
   const [formData, setFormData] = useState({
