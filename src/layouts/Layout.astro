@@ -6,7 +6,7 @@ interface Props {
 
 const {
   title,
-  description = "El sitio definitivo sobre el eterno debate de Las Mañanitas",
+  description = "¿Tu cumpleaños o día de tu santo? Únete al debate nacional sobre la letra de Las Mañanitas, vota por tu versión y firma la petición oficial.",
 } = Astro.props;
 import Header from "../components/Header.astro";
 import "../styles/global.css";
@@ -23,13 +23,29 @@ import "../styles/global.css";
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta
+      property="og:image"
+      content={new URL("/social-share.png", Astro.url)}
+    />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
+    <meta
+      property="twitter:image"
+      content={new URL("/social-share.png", Astro.url)}
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={Astro.url} />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#ec4899" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

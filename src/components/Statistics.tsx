@@ -12,11 +12,6 @@ const versionLabels: Record<VoteVersion, { label: string; emoji: string; color: 
     emoji: '🙏',
     color: 'from-purple-500 to-pink-500'
   },
-  'hoy-que-estas-de-cumpleaños': { 
-    label: 'Hoy que estás de cumpleaños', 
-    emoji: '🎉',
-    color: 'from-green-500 to-emerald-500'
-  },
   'otras-variaciones': { 
     label: 'Otras variaciones', 
     emoji: '🤷',

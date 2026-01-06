@@ -5,6 +5,7 @@ import Survey from "../components/Survey";
 import Statistics from "../components/Statistics";
 import TopVersions from "../components/TopVersions.astro";
 import VideoGallery from "../components/VideoGallery.astro";
+import Testimonials from "../components/Testimonials";
 ---
 
 <Layout title="Las Mañanitas - El Debate Definitivo">
@@ -26,6 +27,11 @@ import VideoGallery from "../components/VideoGallery.astro";
     <!-- Video Gallery Section -->
     <VideoGallery />
 
+    <!-- Testimonials Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Testimonials client:load initialLimit={3} />
+    </section>
+
     <!-- Call to Action / Petition -->
     <section class="py-24 px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto text-center">
@@ -40,16 +46,18 @@ import VideoGallery from "../components/VideoGallery.astro";
             Mañanitas para evitar más silencios incómodos.
           </p>
           <div class="flex flex-col sm:flex-row gap-6 justify-center">
-            <button
-              class="bg-white text-pink-600 px-10 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-all duration-300 shadow-xl"
+            <a
+              href="/peticion"
+              class="bg-white text-pink-600 px-10 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-all duration-300 shadow-xl inline-block"
             >
               Firmar la Petición
-            </button>
-            <button
-              class="bg-white/20 backdrop-blur-md border border-white/40 text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-white/30 transition-all duration-300"
+            </a>
+            <a
+              href="/compartir"
+              class="bg-white/20 backdrop-blur-md border border-white/40 text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-white/30 transition-all duration-300 inline-block"
             >
               Compartir Debate
-            </button>
+            </a>
           </div>
         </div>
       </div>

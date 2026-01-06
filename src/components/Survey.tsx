@@ -15,12 +15,6 @@ const versionOptions = [
     description: 'La versión religiosa tradicional'
   },
   {
-    id: 'hoy-que-estas-de-cumpleaños' as VoteVersion,
-    label: 'Hoy que estás de cumpleaños',
-    emoji: '🎉',
-    description: 'La variación moderna'
-  },
-  {
     id: 'otras-variaciones' as VoteVersion,
     label: 'Otras variaciones / No sé',
     emoji: '🤷',
@@ -79,7 +73,7 @@ export default function Survey() {
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <h2 className="text-5xl sm:text-6xl font-black text-center mb-4 text-slate-900 tracking-tight">
           🗳️ ¿Cuál es tu versión?
         </h2>
@@ -87,26 +81,27 @@ export default function Survey() {
           Vota por la versión que TÚ cantas (o intentas cantar)
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {versionOptions.map((option) => (
-            <label
-              key={option.id}
-              className={`
-                block bg-white/60 backdrop-blur-md border-2 rounded-3xl p-8 cursor-pointer
-                transition-all duration-500 hover:scale-102 hover:bg-white/80
-                ${selectedVersion === option.id 
-                  ? 'border-pink-500 bg-white/90 shadow-2xl shadow-pink-200/40' 
-                  : 'border-white/40 hover:border-pink-200 shadow-lg shadow-slate-200/20'
-                }
-              `}
-            >
-              <div className="flex items-center gap-6">
+        <form onSubmit={handleSubmit} className="space-y-10">
+          <div className="grid md:grid-cols-3 gap-6">
+            {versionOptions.map((option) => (
+              <label
+                key={option.id}
+                className={`
+                  relative flex flex-col items-center text-center bg-white/60 backdrop-blur-md border-2 rounded-[2.5rem] p-10 cursor-pointer
+                  transition-all duration-500 hover:scale-105 hover:bg-white/80
+                  ${selectedVersion === option.id 
+                    ? 'border-pink-500 bg-white/90 shadow-2xl shadow-pink-200/40' 
+                    : 'border-white/40 hover:border-pink-200 shadow-lg shadow-slate-200/20'
+                  }
+                `}
+              >
                 <div className={`
-                  w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-300
+                  absolute top-6 right-6 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-300
                   ${selectedVersion === option.id ? 'border-pink-500 bg-pink-500' : 'border-slate-300'}
                 `}>
                   {selectedVersion === option.id && <div className="w-2 h-2 bg-white rounded-full"></div>}
                 </div>
+                
                 <input
                   type="radio"
                   name="version"
@@ -115,20 +110,21 @@ export default function Survey() {
                   onChange={() => setSelectedVersion(option.id)}
                   className="hidden"
                 />
-                <div className="flex-1">
-                  <div className="flex items-center gap-4 mb-2">
-                    <span className="text-4xl">{option.emoji}</span>
-                    <span className={`text-2xl font-black transition-colors duration-300 ${selectedVersion === option.id ? 'text-pink-600' : 'text-slate-900'}`}>
-                      {option.label}
-                    </span>
-                  </div>
-                  <p className="text-slate-500 text-lg font-medium ml-14">
-                    {option.description}
-                  </p>
+                
+                <div className="text-7xl mb-6 group-hover:animate-bounce transition-transform">
+                  {option.emoji}
                 </div>
-              </div>
-            </label>
-          ))}
+                
+                <h3 className={`text-2xl font-black mb-4 leading-tight transition-colors duration-300 ${selectedVersion === option.id ? 'text-pink-600' : 'text-slate-900'}`}>
+                  {option.label}
+                </h3>
+                
+                <p className="text-slate-500 text-lg font-medium">
+                  {option.description}
+                </p>
+              </label>
+            ))}
+          </div>
 
           {error && (
             <div className="bg-red-50 border border-red-200 rounded-2xl p-6 text-red-600 text-center font-bold text-lg">

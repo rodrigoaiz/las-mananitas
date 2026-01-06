@@ -1,0 +1,57 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PetitionForm from "../components/PetitionForm";
+import Testimonials from "../components/Testimonials";
+---
+
+<Layout title="Firma la Petición - Las Mañanitas">
+  <main class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto">
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 text-slate-400 hover:text-pink-600 font-bold uppercase tracking-widest text-sm mb-12 transition-colors group"
+      >
+        <svg
+          class="w-4 h-4 transform group-hover:-translate-x-2 transition-transform"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="3"
+            d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+        </svg>
+        Volver al Debate
+      </a>
+
+      <div class="text-center mb-16">
+        <div class="text-8xl mb-8 animate-bounce">✍️</div>
+        <h1
+          class="text-5xl sm:text-6xl font-black text-slate-900 mb-6 tracking-tight leading-tight"
+        >
+          Hagámoslo <span
+            class="bg-gradient-to-r from-pink-600 via-orange-500 to-yellow-500 bg-clip-text text-transparent"
+            >Oficial</span
+          >
+        </h1>
+        <p class="text-xl text-slate-500 font-medium max-w-2xl mx-auto">
+          Firma aquí para exigir una versión única y evitar más silencios
+          incómodos en los cumpleaños.
+        </p>
+      </div>
+
+      <div class="max-w-3xl mx-auto">
+        <PetitionForm client:load />
+      </div>
+
+      <Testimonials client:load />
+
+      <p class="text-center text-slate-400 font-medium mt-20">
+        * Al firmar, aceptas que el "día de tu santo" y "tu cumpleaños" son
+        cosas diferentes pero igual de confusas.
+      </p>
+    </div>
+  </main>
+</Layout>
