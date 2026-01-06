@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getSignatures, type SignatureData } from '../lib/firebase';
+import { getSignatures, type SignatureData } from '../lib/supabase';
 
 interface TestimonialsProps {
   initialLimit?: number;

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { submitVote, type VoteVersion } from '../lib/firebase';
+import { submitVote, type VoteVersion } from '../lib/supabase';
 
 const versionOptions = [
   {

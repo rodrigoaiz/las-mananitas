@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getStatistics, type Statistics, type VoteVersion } from '../lib/firebase';
+import { getStatistics, type Statistics, type VoteVersion } from '../lib/supabase';
 
 const versionLabels: Record<VoteVersion, { label: string; emoji: string; color: string }> = {
   'hoy-por-ser-tu-cumpleaños': { 
