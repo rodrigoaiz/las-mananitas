@@ -32,129 +32,95 @@ Un sitio web moderno e interactivo que aborda el problema cultural de las difere
 npm install
 ```
 
-### 2. Configurar Firebase
+### 2. Configurar Supabase
 
-1. Ve a [Firebase Console](https://console.firebase.google.com/)
+1. Ve a [Supabase Console](https://supabase.com/dashboard/)
 2. Crea un nuevo proyecto
-3. Habilita Firestore Database
-4. Copia las credenciales de configuración
-5. Edita `src/lib/firebase.ts` y reemplaza los valores de `firebaseConfig`:
+3. Copia la `URL` y la `anon key` de la configuración de API.
+4. Edita `.env` (o crea uno) y añade:
 
-```typescript
-const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "TU_AUTH_DOMAIN",
-  projectId: "TU_PROJECT_ID",
-  storageBucket: "TU_STORAGE_BUCKET",
-  messagingSenderId: "TU_MESSAGING_SENDER_ID",
-  appId: "TU_APP_ID"
-};
+```env
+PUBLIC_SUPABASE_URL=TU_SUPABASE_URL
+PUBLIC_SUPABASE_ANON_KEY=TU_SUPABASE_ANON_KEY
 ```
 
-### 3. Configurar Firestore
+### 3. Configurar la Base de Datos (SQL)
 
-En Firebase Console, crea las siguientes colecciones:
+Ejecuta el siguiente script en el **SQL Editor** de Supabase para crear las tablas, funciones y políticas de seguridad:
 
-- `votes` - Se llenará automáticamente con los votos
-- `statistics` - Crea un documento con ID `global` y la siguiente estructura:
+```sql
+-- 1. Crear tablas
+CREATE TABLE votes (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  version TEXT NOT NULL,
+  user_agent TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
 
-```json
-{
-  "totalVotes": 0,
-  "versionCounts": {
-    "hoy-por-ser-tu-cumpleaños": 0,
-    "hoy-por-ser-dia-de-tu-santo": 0,
-    "otras-variaciones": 0
-  },
-  "lastUpdated": null
-}
+CREATE TABLE signatures (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name TEXT NOT NULL,
+  reason TEXT NOT NULL,
+  country TEXT NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE statistics (
+  id TEXT PRIMARY KEY,
+  total_votes BIGINT DEFAULT 0,
+  version_counts JSONB DEFAULT '{}'::jsonb,
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 2. Inicializar estadísticas
+INSERT INTO statistics (id, total_votes, version_counts)
+VALUES ('global', 0, '{"hoy-por-ser-tu-cumpleaños": 0, "hoy-por-ser-dia-de-tu-santo": 0, "otras-variaciones": 0}'::jsonb);
+
+-- 3. Función para agregar votos
+CREATE OR REPLACE FUNCTION aggregate_vote()
+RETURNS TRIGGER AS $$
+BEGIN
+  UPDATE statistics
+  SET 
+    total_votes = total_votes + 1,
+    version_counts = jsonb_set(
+      version_counts, 
+      ARRAY[NEW.version], 
+      ((COALESCE(version_counts->>NEW.version, '0')::int) + 1)::text::jsonb
+    ),
+    updated_at = NOW()
+  WHERE id = 'global';
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- 4. Trigger para votos
+CREATE TRIGGER on_vote_created
+AFTER INSERT ON votes
+FOR EACH ROW EXECUTE FUNCTION aggregate_vote();
+
+-- 5. Seguridad (RLS)
+ALTER TABLE votes ENABLE ROW LEVEL SECURITY;
+ALTER TABLE signatures ENABLE ROW LEVEL SECURITY;
+ALTER TABLE statistics ENABLE ROW LEVEL SECURITY;
+
+-- Políticas para votes: Solo creación
+CREATE POLICY "Allow anonymous insert" ON votes FOR INSERT WITH CHECK (true);
+
+-- Políticas para signatures: Lectura y creación
+CREATE POLICY "Allow anonymous read" ON signatures FOR SELECT USING (true);
+CREATE POLICY "Allow anonymous insert" ON signatures FOR INSERT WITH CHECK (true);
+
+-- Políticas para statistics: Solo lectura
+CREATE POLICY "Allow anonymous read" ON statistics FOR SELECT USING (true);
 ```
 
-- `signatures` - Se llenará automáticamente con las firmas de la petición.
+### 4. Variables de Entorno (Vercel)
 
-### 4. Configurar Reglas de Seguridad de Firestore
+Para despliegues en producción, añade estas variables en el panel de Vercel:
 
-En Firebase Console > Firestore Database > Rules, usa estas reglas:
-
-```javascript
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    // Allow read access to statistics (Read-only for everyone)
-    match /statistics/{document=**} {
-      allow read: if true;
-      allow write: if false; 
-    }
-    
-    // Allow write to votes (Create-only, no read/update/delete)
-    match /votes/{document=**} {
-      allow read: if false;
-      allow create: if true;
-      allow update, delete: if false;
-    }
-
-    // Allow read/create to signatures (No update/delete)
-    match /signatures/{document=**} {
-      allow read: if true;
-      allow create: if true;
-      allow update, delete: if false;
-    }
-  }
-}
-```
-
-### 5. Configuración de Seguridad (Cloud Functions)
-
-Para que las estadísticas se actualicen de forma segura sin permitir que los usuarios las modifiquen directamente, debes usar una **Firebase Cloud Function**. 
-
-Crea un archivo `index.js` en tu carpeta `functions/` de Firebase con el siguiente código:
-
-```javascript
-const functions = require('firebase-functions');
-const admin = require('firebase-admin');
-admin.initializeApp();
-
-exports.aggregateVotes = functions.firestore
-    .document('votes/{voteId}')
-    .onCreate(async (snap, context) => {
-        const voteData = snap.data();
-        const version = voteData.version;
-        const statsRef = admin.firestore().doc('statistics/global');
-
-        return admin.firestore().runTransaction(async (transaction) => {
-            const statsDoc = await transaction.get(statsRef);
-            
-            if (!statsDoc.exists) {
-                return transaction.set(statsRef, {
-                    totalVotes: 1,
-                    versionCounts: { [version]: 1 },
-                    lastUpdated: admin.firestore.FieldValue.serverTimestamp()
-                });
-            }
-
-            const currentStats = statsDoc.data();
-            const newCounts = { ...currentStats.versionCounts };
-            newCounts[version] = (newCounts[version] || 0) + 1;
-
-            return transaction.update(statsRef, {
-                totalVotes: currentStats.totalVotes + 1,
-                versionCounts: newCounts,
-                lastUpdated: admin.firestore.FieldValue.serverTimestamp()
-            });
-        });
-    });
-```
-
-### 5. Variables de Entorno (Vercel)
-
-Para despliegues en producción, se recomienda usar variables de entorno. En Astro, estas deben empezar con `PUBLIC_`:
-
-- `PUBLIC_FIREBASE_API_KEY`
-- `PUBLIC_FIREBASE_AUTH_DOMAIN`
-- `PUBLIC_FIREBASE_PROJECT_ID`
-- `PUBLIC_FIREBASE_STORAGE_BUCKET`
-- `PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
-- `PUBLIC_FIREBASE_APP_ID`
+- `PUBLIC_SUPABASE_URL`
+- `PUBLIC_SUPABASE_ANON_KEY`
 
 ## 🚀 Desarrollo
 
@@ -194,7 +160,7 @@ las-mananitas/
 │   ├── layouts/
 │   │   └── Layout.astro        # Layout base
 │   ├── lib/
-│   │   └── firebase.ts         # Configuración y utilidades de Firebase
+│   │   └── supabase.ts         # Configuración y utilidades de Supabase
 │   ├── pages/
 │   │   └── index.astro         # Página principal
 │   └── styles/
@@ -214,7 +180,7 @@ Los colores principales se definen usando las utilidades de TailwindCSS. Puedes 
 
 Para agregar o modificar versiones, edita los arrays en:
 - `src/components/Survey.tsx` - opciones de votación
-- `src/lib/firebase.ts` - tipos de TypeScript
+- `src/lib/supabase.ts` - tipos de TypeScript y lógica
 
 ## 📱 Despliegue
 
