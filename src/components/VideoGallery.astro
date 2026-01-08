@@ -4,28 +4,26 @@ const videos = [
   {
     title: "Vicente Fernández",
     description: "La versión clásica del Charro de Huentitán",
-    youtubeId: "y8HTr-F-FVM",
-    thumbnail: "https://img.youtube.com/vi/y8HTr-F-FVM/hqdefault.jpg"
+    youtubeId: "cDT12zAWDuM",
   },
   {
     title: "Pedro Infante",
     description: "El ídolo de México cantando Las Mañanitas",
-    youtubeId: "KQwzGPjAUXI",
-    thumbnail: "https://img.youtube.com/vi/KQwzGPjAUXI/hqdefault.jpg"
+    youtubeId: "0TaL-pX7pPY",
   },
   {
     title: "Mariachi Vargas",
     description: "El mejor mariachi del mundo",
-    youtubeId: "BjSnj-LfZRg",
-    thumbnail: "https://img.youtube.com/vi/BjSnj-LfZRg/hqdefault.jpg"
+    youtubeId: "m908Q6cB-14",
   },
   {
-    title: "Luis Miguel",
-    description: "El Sol de México con su versión romántica",
-    youtubeId: "QLt0lerdgKs",
-    thumbnail: "https://img.youtube.com/vi/QLt0lerdgKs/hqdefault.jpg"
+    title: "Alejandro Fernández",
+    description: "Moderna que todos gozan",
+    youtubeId: "zKZnR6d_nzI",
   }
 ];
+
+const getThumbnail = (id: string) => `https://img.youtube.com/vi/${id}/mqdefault.jpg`;
 ---
 
 <section class="py-24 px-4 sm:px-6 lg:px-8">
@@ -48,7 +46,7 @@ const videos = [
           <!-- Thumbnail -->
           <div class="relative aspect-video overflow-hidden">
             <img 
-              src={video.thumbnail} 
+              src={getThumbnail(video.youtubeId)} 
               alt={video.title}
               class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
             />
