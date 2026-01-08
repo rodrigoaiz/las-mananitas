@@ -9,7 +9,7 @@ emoji: "⚔️"
 
 Si alguna vez has estado en medio de un coro de mañanitas y has sentido ese momento de pánico donde no sabes si gritar *"hoy por ser día de tu santo"* o *"hoy por ser tu cumpleaños"*, no estás solo. Este pequeño choque de palabras es en realidad el reflejo de un cambio cultural profundo en la historia de México.
 
-![Ilustración de músicos tradicionales](/images/articulos/musicos-coloniales.png)
+![Ilustración comparativa de Santo vs Cumpleaños](/images/articulos/santo-vs-cumpleanos.svg)
 *Durante siglos, la música fue el cronómetro de la vida social y religiosa en los pueblos de México.*
 
 ## 1. El Santoral: Cuando el nombre era el destino

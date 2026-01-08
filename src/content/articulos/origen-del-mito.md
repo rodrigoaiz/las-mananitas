@@ -7,7 +7,7 @@ emoji: "📜"
 
 Aunque parezca que **Las Mañanitas** han existido desde que el primer mexicano cumplió años, la realidad es que su historia es un mosaico de influencias que se remontan a varios siglos atrás. No nacieron como una composición única, sino como una evolución de estilos musicales que cruzaron el Atlántico.
 
-![Ilustración de músicos tradicionales](/images/articulos/musicos-coloniales.png)
+![Ilustración de músicos tradicionales](/images/articulos/musicos-coloniales.webp)
 *La música en la Nueva España era un puente constante entre las tradiciones europeas y la nueva identidad mestiza.*
 
 ## 1. De las Albadas a las Mañanitas

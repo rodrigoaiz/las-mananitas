@@ -11,7 +11,7 @@ Como todos sabemos, la canción comienza con la famosa frase:
 
 *"Estas son las mañanitas que cantaba el Rey David..."*
 
-![Ilustración del Rey David](/images/articulos/rey-david.png)
+![Ilustración del Rey David](/images/articulos/rey-david.webp)
 
 Si alguna vez te has preguntado por qué mencionamos a un monarca de hace tres mil años justo antes de morder el pastel, la respuesta no es tan simple como parece. No se trata solo de una mención al azar, sino de un proceso de siglos que transformó el folklore europeo en el himno nacional de los cumpleaños.
 
