@@ -1,6 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import VoteCTA from "../../components/VoteCTA.astro";
+import FloatingVote from "../../components/FloatingVote.astro";
 
 export async function getStaticPaths() {
   const articulos = await getCollection("articulos");
@@ -49,6 +51,16 @@ const { Content } = await entry.render();
         <p class="text-xl text-slate-500 font-medium italic">
           {entry.data.description}
         </p>
+
+        <!-- Subtle top CTA -->
+        <div class="mt-8 flex justify-center">
+          <a
+            href="/#survey"
+            class="text-sm font-black uppercase tracking-widest text-pink-600 bg-pink-50 px-6 py-2 rounded-full hover:bg-pink-100 transition-colors"
+          >
+            🔥 Únete al gran debate aquí
+          </a>
+        </div>
       </div>
 
       <div
@@ -62,6 +74,8 @@ const { Content } = await entry.render();
       >
         <Content />
       </div>
+
+      <VoteCTA />
 
       <div class="mt-20 text-center border-t border-slate-200 pt-12">
         <p class="text-slate-400 font-medium">
@@ -78,6 +92,7 @@ const { Content } = await entry.render();
       </div>
     </article>
   </main>
+  <FloatingVote />
 </Layout>
 
 <style is:global>

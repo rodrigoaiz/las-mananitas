@@ -1,0 +1,27 @@
+---
+
+---
+
+<a
+  href="/#survey"
+  id="floating-vote"
+  class="fixed bottom-8 right-8 z-50 bg-gradient-to-r from-pink-600 to-orange-500 text-white px-6 py-4 rounded-full font-black text-lg shadow-2xl shadow-pink-200/50 flex items-center gap-3 hover:scale-110 active:scale-95 transition-all duration-300 animate-bounce-subtle group hidden sm:flex"
+>
+  <span class="text-2xl group-hover:rotate-12 transition-transform">🗳️</span>
+  <span>¡Vota en el debate!</span>
+</a>
+
+<style>
+  @keyframes bounce-subtle {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  .animate-bounce-subtle {
+    animation: bounce-subtle 3s ease-in-out infinite;
+  }
+</style>

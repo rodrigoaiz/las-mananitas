@@ -1,6 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import VoteCTA from "../../components/VoteCTA.astro";
+import FloatingVote from "../../components/FloatingVote.astro";
 
 const posts = await getCollection("articulos");
 // Sort by date descending
@@ -58,5 +60,10 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
         ))
       }
     </div>
+
+    <div class="max-w-4xl mx-auto">
+      <VoteCTA />
+    </div>
   </main>
+  <FloatingVote />
 </Layout>

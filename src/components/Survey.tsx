@@ -72,7 +72,7 @@ export default function Survey() {
   }
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
+    <section className="pt-34 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-5xl sm:text-6xl font-black text-center mb-4 text-slate-900 tracking-tight">
           🗳️ ¿Cuál es tu versión?

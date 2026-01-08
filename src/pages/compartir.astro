@@ -40,37 +40,80 @@ import Layout from "../layouts/Layout.astro";
         </p>
       </div>
 
+      <!-- Sharing Grid -->
       <div class="grid gap-6 sm:grid-cols-2">
         <button
-          class="bg-[#1DA1F2] text-white p-8 rounded-[2.5rem] font-black text-2xl hover:scale-105 transition-all duration-300 shadow-xl shadow-blue-200/50 flex flex-col items-center gap-4"
-          onclick="alert('Compartiendo en Twitter...')"
+          id="share-twitter"
+          class="bg-[#000000] text-white p-8 rounded-[2.5rem] font-black text-2xl hover:scale-102 active:scale-95 transition-all duration-300 shadow-xl shadow-slate-900/20 flex flex-col items-center gap-4 group"
         >
-          <span class="text-4xl">🐦</span>
+          <svg
+            class="w-12 h-12 group-hover:scale-110 transition-transform fill-white"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+            ></path>
+          </svg>
           Twitter / X
         </button>
 
         <button
-          class="bg-[#25D366] text-white p-8 rounded-[2.5rem] font-black text-2xl hover:scale-105 transition-all duration-300 shadow-xl shadow-green-200/50 flex flex-col items-center gap-4"
-          onclick="alert('Compartiendo en WhatsApp...')"
+          id="share-whatsapp"
+          class="bg-[#25D366] text-white p-8 rounded-[2.5rem] font-black text-2xl hover:scale-102 active:scale-95 transition-all duration-300 shadow-xl shadow-green-200/50 flex flex-col items-center gap-4 group"
         >
-          <span class="text-4xl">💬</span>
+          <svg
+            class="w-12 h-12 group-hover:scale-110 transition-transform fill-white"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.27 9.27 0 01-4.731-1.29l-.339-.202-3.51.92.936-3.424-.221-.353a9.24 9.24 0 01-1.419-4.88c0-5.111 4.156-9.266 9.27-9.266 2.476 0 4.805.964 6.551 2.71a9.213 9.213 0 012.712 6.556c0 5.113-4.158 9.267-9.272 9.267m8.931-18.23a10.875 10.875 0 00-7.688-3.187C5.176.375.375 5.176.375 11.026c0 1.871.488 3.698 1.416 5.308L0 23.63l7.355-1.929a10.84 10.84 0 00 5.02 1.23h.005c5.85 0 10.65-4.802 10.651-10.654 0-2.835-1.104-5.5-3.111-7.506z"
+            ></path>
+          </svg>
           WhatsApp
         </button>
 
         <button
-          class="bg-[#1877F2] text-white p-8 rounded-[2.5rem] font-black text-2xl hover:scale-105 transition-all duration-300 shadow-xl shadow-blue-300/50 flex flex-col items-center gap-4"
-          onclick="alert('Compartiendo en Facebook...')"
+          id="share-facebook"
+          class="bg-[#1877F2] text-white p-8 rounded-[2.5rem] font-black text-2xl hover:scale-102 active:scale-95 transition-all duration-300 shadow-xl shadow-blue-300/50 flex flex-col items-center gap-4 group"
         >
-          <span class="text-4xl">👥</span>
+          <svg
+            class="w-12 h-12 group-hover:scale-110 transition-transform fill-white"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.387H7.078v-3.467h3.047V9.43c0-3.007 1.792-4.667 4.533-4.667 1.312 0 2.686.233 2.686.233v2.953h-1.514c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.467h-2.796v8.387C19.612 23.027 24 18.062 24 12.073z"
+            ></path>
+          </svg>
           Facebook
         </button>
 
         <button
-          class="bg-white text-slate-900 p-8 rounded-[2.5rem] font-black text-2xl hover:scale-105 transition-all duration-300 shadow-xl shadow-slate-200/50 border-2 border-slate-100 flex flex-col items-center gap-4"
-          onclick="navigator.clipboard.writeText(window.location.origin); alert('¡Enlace copiado al portapapeles!')"
+          id="share-copy"
+          class="bg-white text-slate-900 p-8 rounded-[2.5rem] font-black text-2xl hover:scale-102 active:scale-95 transition-all duration-300 shadow-xl shadow-slate-200/50 border-2 border-slate-100 flex flex-col items-center gap-4 group relative overflow-hidden"
         >
-          <span class="text-4xl">🔗</span>
-          Copiar Enlace
+          <svg
+            class="w-12 h-12 group-hover:scale-110 transition-transform stroke-slate-900 fill-none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+            ></path>
+            <path
+              d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+            ></path>
+          </svg>
+          <span id="copy-text">Copiar Enlace</span>
+
+          <!-- Success feedback overlay -->
+          <div
+            id="copy-success"
+            class="absolute inset-0 bg-green-500 text-white flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300"
+          >
+            <span class="font-black">¡Copiado! 🍰</span>
+          </div>
         </button>
       </div>
 
@@ -78,10 +121,54 @@ import Layout from "../layouts/Layout.astro";
         class="mt-16 bg-pink-50 rounded-[2.5rem] p-10 text-center border-2 border-pink-100"
       >
         <p class="text-pink-600 font-bold text-lg italic">
-          "El chisme compartido se disfruta el doble."
+          "La tradición compartida se vive con más alegría."
         </p>
         <p class="text-pink-400 font-medium mt-2">- El Tío Mañanitas</p>
       </div>
     </div>
   </main>
 </Layout>
+
+<script>
+  const shareData = {
+    title: "Las Mañanitas - El Debate Definitivo",
+    text: '¿"Día de tu santo" o "tu cumpleaños"? Entra y vota por tu versión favorita de Las Mañanitas. 🎂🇲🇽',
+    url: window.location.origin,
+  };
+
+  // --- Social Links ---
+  document.getElementById("share-twitter")?.addEventListener("click", () => {
+    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareData.text)}&url=${encodeURIComponent(shareData.url)}`;
+    window.open(url, "_blank");
+  });
+
+  document.getElementById("share-whatsapp")?.addEventListener("click", () => {
+    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareData.text + " " + shareData.url)}`;
+    window.open(url, "_blank");
+  });
+
+  document.getElementById("share-facebook")?.addEventListener("click", () => {
+    const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareData.url)}`;
+    window.open(url, "_blank");
+  });
+
+  // --- Copy Link ---
+  const copyBtn = document.getElementById("share-copy");
+  const successOverlay = document.getElementById("copy-success");
+
+  copyBtn?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(shareData.url);
+
+      // Show feedback
+      if (successOverlay) {
+        successOverlay.style.opacity = "1";
+        setTimeout(() => {
+          successOverlay.style.opacity = "0";
+        }, 2000);
+      }
+    } catch (err) {
+      console.error("Error al copiar:", err);
+    }
+  });
+</script>
