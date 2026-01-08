@@ -7,6 +7,8 @@ emoji: "👑"
 
 ## Del arpa al mariachi
 
+Como todos sabemos, la canción comienza con la famosa frase:
+
 *"Estas son las mañanitas que cantaba el Rey David..."*
 
 ![Ilustración del Rey David](/images/articulos/rey-david.png)
