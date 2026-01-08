@@ -16,7 +16,9 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Layout title={`${entry.data.title} - ¡Queremos Pastel!`}>
+<Layout
+  title={`${entry.data.title} | Historia de Las Mañanitas - ¡Queremos Pastel!`}
+>
   <main class="py-20 px-4 sm:px-6 lg:px-8">
     <article class="max-w-3xl mx-auto">
       <!-- Back button -->
