@@ -47,20 +47,15 @@ export default function Statistics() {
 
   useEffect(() => {
     fetchStats();
-
-    // Listen for vote submissions to refresh stats
+    
     const handleVoteSubmitted = () => {
-      setTimeout(fetchStats, 1000); // Small delay to ensure Firebase has updated
+      setTimeout(fetchStats, 1000);
     };
 
     window.addEventListener("voteSubmitted", handleVoteSubmitted);
 
-    // Auto-refresh every 30 seconds
-    const interval = setInterval(fetchStats, 30000);
-
     return () => {
       window.removeEventListener("voteSubmitted", handleVoteSubmitted);
-      clearInterval(interval);
     };
   }, []);
 
@@ -163,6 +158,18 @@ export default function Statistics() {
                   }
                 `}
               >
+                {/* Winner Crown - Floating corner */}
+                {isWinner && (
+                  <div className="absolute top-4 right-4 z-20">
+                    <span
+                      className="text-4xl animate-bounce-slow block drop-shadow-md"
+                      title="Ganadora actual"
+                    >
+                      👑
+                    </span>
+                  </div>
+                )}
+
                 {/* Background bar */}
                 <div
                   className={`absolute inset-0 bg-gradient-to-r ${versionInfo.color} opacity-10 transition-all duration-1000 ease-out`}
@@ -170,16 +177,8 @@ export default function Statistics() {
                 />
 
                 {/* Content */}
-                <div className="relative flex items-center justify-between gap-6">
+                <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
                   <div className="flex items-center gap-6 flex-1">
-                    {isWinner && (
-                      <span
-                        className="text-4xl animate-bounce-slow"
-                        title="Ganadora actual"
-                      >
-                        👑
-                      </span>
-                    )}
                     <span className="text-5xl drop-shadow-sm">
                       {versionInfo.emoji}
                     </span>
@@ -197,9 +196,9 @@ export default function Statistics() {
                       </p>
                     </div>
                   </div>
-                  <div className="text-right">
+                  <div className="text-left sm:text-right w-full sm:w-auto mt-4 sm:mt-0 pt-4 sm:pt-0 border-t sm:border-t-0 border-slate-100 sm:border-transparent">
                     <p
-                      className={`text-5xl font-black tracking-tighter sm:text-6xl ${
+                      className={`text-6xl sm:text-6xl font-black tracking-tighter ${
                         isWinner ? "text-slate-900" : "text-slate-400"
                       }`}
                     >
@@ -218,7 +217,7 @@ export default function Statistics() {
             <p className="text-5xl mb-4">😅</p>
             <p className="text-3xl font-black text-orange-500 mb-2">100%</p>
             <p className="text-slate-500 font-bold uppercase tracking-widest text-sm">
-              Probabilidad de silencias incómodos
+              Probabilidad de silenciosos incómodos
             </p>
           </div>
           <div className="bg-white/60 backdrop-blur-md border border-white/40 rounded-3xl p-10 text-center shadow-lg hover:shadow-blue-200/20 transition-all duration-500">
@@ -232,14 +231,11 @@ export default function Statistics() {
           </div>
         </div>
 
-        {/* Last updated footer info */}
+        {/* Sincronización footer info */}
         <div className="mt-16 text-center">
-          <p className="text-slate-400 text-base font-medium inline-flex items-center gap-2 px-6 py-2 bg-slate-50 rounded-full border border-slate-100">
-            <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-            </span>
-            Sincronizado en tiempo real cada 30s
+          <p className="text-slate-400 text-sm font-medium inline-flex items-center gap-2 px-6 py-2 bg-slate-50 rounded-full border border-slate-100">
+            <span className="flex h-2 w-2 rounded-full bg-green-500"></span>
+            Actualizado automáticamente al votar
           </p>
         </div>
       </div>
