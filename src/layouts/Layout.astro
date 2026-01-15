@@ -2,14 +2,42 @@
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  article?: {
+    publishedTime?: string;
+    authorName?: string;
+  };
 }
 
 const {
   title,
-  description = "¿'Día de tu santo' o 'tu cumpleaños'? Únete al debate nacional más grande de México sobre la letra de Las Mañanitas. Vota por tu versión favorita, conoce su historia y firma la petición oficial.",
+  description = "¿Se dice 'día de tu santo' o 'tu cumpleaños'? Participa en el debate nacional sobre la letra de Las Mañanitas. Vota, conoce la historia, lee la letra completa y únete a la petición.",
+  image = "/social-share.png",
+  article,
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImageURL = new URL(image, Astro.url);
+
 import Header from "../components/Header.astro";
 import "../styles/global.css";
+
+// JSON-LD Structured Data
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": article ? "Article" : "WebSite",
+  name: title,
+  description: description,
+  url: canonicalURL.toString(),
+  image: socialImageURL.toString(),
+  ...(article && {
+    datePublished: article.publishedTime,
+    author: {
+      "@type": "Person",
+      name: article.authorName || "El Tío Mañanitas",
+    },
+  }),
+};
 ---
 
 <!doctype html>
@@ -36,32 +64,30 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="index, follow" />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:type" content={article ? "article" : "website"} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta
-      property="og:image"
-      content={new URL("/social-share.png", Astro.url)}
-    />
+    <meta property="og:image" content={socialImageURL} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta
-      property="twitter:image"
-      content={new URL("/social-share.png", Astro.url)}
-    />
+    <meta property="twitter:image" content={socialImageURL} />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href={Astro.url} />
+    <link rel="canonical" href={canonicalURL} />
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#ec4899" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

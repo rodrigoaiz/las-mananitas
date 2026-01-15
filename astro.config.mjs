@@ -8,6 +8,7 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://las-mananitas.vercel.app',
+  trailingSlash: 'always',
   
   vite: {
     plugins: [tailwindcss()]

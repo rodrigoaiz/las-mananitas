@@ -1,0 +1,195 @@
+---
+import Layout from "../layouts/Layout.astro";
+import FloatingVote from "../components/FloatingVote.astro";
+
+const title = "Letra de Las Mañanitas: Versiones Completa y Diferencias";
+const description =
+  "Consulta la letra completa de Las Mañanitas. Comparamos las versiones de 'día de tu santo' vs 'tu cumpleaños', y los versos del Rey David.";
+---
+
+<Layout title={title} description={description}>
+  <main class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <h1
+          class="text-5xl sm:text-7xl font-black text-slate-900 mb-6 tracking-tight"
+        >
+          🎶 Letra de <span
+            class="bg-gradient-to-r from-pink-600 to-orange-500 bg-clip-text text-transparent"
+            >Las Mañanitas</span
+          >
+        </h1>
+        <p class="text-xl text-slate-500 font-medium">
+          La canción que une (y divide) a todo México. Aquí tienes la letra
+          completa y sus variaciones más comunes.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 mb-20">
+        <!-- Versión Tradicional -->
+        <div
+          class="bg-white/60 backdrop-blur-md border-2 border-white/40 rounded-[3rem] p-10 shadow-xl shadow-pink-200/10"
+        >
+          <h2
+            class="text-3xl font-black text-slate-900 mb-8 flex items-center gap-3"
+          >
+            🇲🇽 Tradicional
+          </h2>
+          <div
+            class="space-y-6 text-xl text-slate-700 font-medium leading-relaxed"
+          >
+            <p>
+              Estas son las mañanitas<br />
+              Que cantaba el Rey David<br />
+              <span class="text-pink-600 font-bold bg-pink-50 px-2 rounded"
+                >Hoy por ser día de tu santo</span
+              ><br />
+              Te las cantamos a ti.
+            </p>
+            <p>
+              Despierta, mi bien, despierta<br />
+              Mira que ya amaneció<br />
+              Ya los pajarillos cantan<br />
+              La luna ya se metió.
+            </p>
+            <p>
+              Qué linda está la mañana<br />
+              En que vengo a saludarte<br />
+              Venimos todos con gusto<br />
+              Y placer a felicitarte.
+            </p>
+          </div>
+        </div>
+
+        <!-- Versión Moderna -->
+        <div
+          class="bg-white/60 backdrop-blur-md border-2 border-white/40 rounded-[3rem] p-10 shadow-xl shadow-orange-200/10"
+        >
+          <h2
+            class="text-3xl font-black text-slate-900 mb-8 flex items-center gap-3"
+          >
+            🎂 Moderna
+          </h2>
+          <div
+            class="space-y-6 text-xl text-slate-700 font-medium leading-relaxed"
+          >
+            <p>
+              Estas son las mañanitas<br />
+              Que cantaba el Rey David<br />
+              <span class="text-orange-600 font-bold bg-orange-50 px-2 rounded"
+                >Hoy por ser tu cumpleaños</span
+              ><br />
+              Te las cantamos a ti.
+            </p>
+            <p>
+              Despierta, mi bien, despierta<br />
+              Mira que ya amaneció<br />
+              Ya los pajarillos cantan<br />
+              La luna ya se metió.
+            </p>
+            <p>
+              El día en que tú naciste<br />
+              Nacieron todas las flores<br />
+              En la pila del bautismo<br />
+              Cantaron los ruiseñores.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Otros Versos -->
+      <section
+        class="bg-slate-900 text-white rounded-[3rem] p-12 sm:p-16 mb-20 shadow-2xl overflow-hidden relative"
+      >
+        <div
+          class="absolute top-0 right-0 w-64 h-64 bg-pink-500/20 blur-[100px] rounded-full"
+        >
+        </div>
+        <div class="relative z-10">
+          <h2 class="text-4xl font-black mb-10 tracking-tight">
+            Los versos "perdidos"
+          </h2>
+          <div class="grid sm:grid-cols-2 gap-10">
+            <div>
+              <p
+                class="text-slate-400 font-bold uppercase tracking-widest text-sm mb-4"
+              >
+                El Solecito
+              </p>
+              <p class="text-xl opacity-90 leading-relaxed italic">
+                "Quisiera ser solecito<br />
+                Para entrar por tu ventana<br />
+                Y darte los buenos días<br />
+                Acostadita en tu cama."
+              </p>
+            </div>
+            <div>
+              <p
+                class="text-slate-400 font-bold uppercase tracking-widest text-sm mb-4"
+              >
+                Las Estrellas
+              </p>
+              <p class="text-xl opacity-90 leading-relaxed italic">
+                "Si yo pudiera bajarte<br />
+                Las estrellas y un lucero<br />
+                Para poder demostrarte<br />
+                Lo mucho que yo te quiero."
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ SEO Section -->
+      <section class="prose prose-slate prose-lg max-w-none">
+        <h2 class="text-4xl font-black text-slate-900 mb-8">
+          Preguntas Frecuentes sobre la letra
+        </h2>
+        <div class="space-y-8">
+          <div>
+            <h3 class="text-2xl font-bold text-slate-900">
+              ¿Quién escribió Las Mañanitas?
+            </h3>
+            <p class="text-slate-600">
+              Es una canción de origen popular, pero la versión que conocemos
+              hoy fue estandarizada por el compositor zacatecano <strong
+                >Manuel M. Ponce</strong
+              > a principios del siglo XX como parte del movimiento nacionalista musical.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-slate-900">
+              ¿Por qué se menciona al Rey David?
+            </h3>
+            <p class="text-slate-600">
+              Se cree que es una referencia bíblica a los Salmos de David, ya
+              que las "mañanitas" originalmente eran cantos religiosos que se
+              hacían al amanecer para honrar a los santos.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="mt-20">
+        <a
+          href="/#survey"
+          class="block bg-gradient-to-r from-pink-600 to-orange-500 p-1 rounded-3xl hover:scale-[1.02] transition-transform"
+        >
+          <div class="bg-white rounded-[1.4rem] p-10 text-center">
+            <h3 class="text-2xl font-black text-slate-900 mb-4">
+              ¿Cuál versión es la correcta para ti?
+            </h3>
+            <p class="text-slate-500 font-medium mb-8">
+              Únete a la votación nacional y ayúdanos a decidir.
+            </p>
+            <span
+              class="inline-block bg-pink-600 text-white px-10 py-4 rounded-2xl font-black text-lg shadow-xl shadow-pink-200"
+              >Ir a votar</span
+            >
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+  <FloatingVote />
+</Layout>
