@@ -121,5 +121,18 @@ const clarityId = "uybpd1j3wm";
   >
     <Header />
     <slot />
+    
+    <!-- Twemoji - Convert all emojis to SVG -->
+    <script>
+      import twemoji from 'twemoji';
+      
+      // Parse emojis on page load
+      document.addEventListener('DOMContentLoaded', () => {
+        twemoji.parse(document.body, {
+          folder: 'svg',
+          ext: '.svg'
+        });
+      });
+    </script>
   </body>
 </html>
