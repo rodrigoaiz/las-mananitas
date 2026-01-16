@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { Icon } from 'astro-icon/components'
+import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import Survey from "../components/Survey";
@@ -12,27 +12,33 @@ import FAQ from "../components/FAQ";
 const faqs = [
   {
     question: "¿Se dice 'día de tu santo' o 'tu cumpleaños' en Las Mañanitas?",
-    answer: "Ambas versiones son correctas. 'Día de tu santo' es la letra tradicional histórica, mientras que 'tu cumpleaños' es la adaptación moderna más común. La controversia existe porque en México la tradición del santoral (celebrar el día del santo patrono de tu nombre) coexistió con la celebración del cumpleaños biológico. Hoy en día, la mayoría usa 'cumpleaños' pero la versión con 'santo' sigue siendo válida y respetada.",
+    answer:
+      "Ambas versiones son correctas. 'Día de tu santo' es la letra tradicional histórica, mientras que 'tu cumpleaños' es la adaptación moderna más común. La controversia existe porque en México la tradición del santoral (celebrar el día del santo patrono de tu nombre) coexistió con la celebración del cumpleaños biológico. Hoy en día, la mayoría usa 'cumpleaños' pero la versión con 'santo' sigue siendo válida y respetada.",
   },
   {
     question: "¿Quién es el Rey David que se menciona en Las Mañanitas?",
-    answer: "El Rey David es el famoso monarca bíblico conocido por escribir los Salmos y por ser un músico talentoso. La tradición cuenta que David cantaba alabanzas al amanecer, de ahí la conexión con 'las mañanitas'. La mención en la canción es una referencia cultural que mezcla la tradición religiosa española con el folklore mexicano, consolidada por el compositor Manuel M. Ponce a principios del siglo XX.",
+    answer:
+      "El Rey David es el famoso monarca bíblico conocido por escribir los Salmos y por ser un músico talentoso. La tradición cuenta que David cantaba alabanzas al amanecer, de ahí la conexión con 'las mañanitas'. La mención en la canción es una referencia cultural que mezcla la tradición religiosa española con el folklore mexicano, consolidada por el compositor Manuel M. Ponce a principios del siglo XX.",
   },
   {
     question: "¿Cuál es la letra completa original de Las Mañanitas?",
-    answer: "La versión original completa tiene 4-6 estrofas según la región, comenzando con 'Estas son las mañanitas que cantaba el Rey David...' seguida de 'Despierta, mi bien, despierta...'. La mayoría solo canta las primeras dos estrofas. Puedes encontrar la letra completa en nuestra sección dedicada con todas las versiones: tradicional, corta, para niños, y con opciones de descarga en PDF.",
+    answer:
+      "La versión original completa tiene 4-6 estrofas según la región, comenzando con 'Estas son las mañanitas que cantaba el Rey David...' seguida de 'Despierta, mi bien, despierta...'. La mayoría solo canta las primeras dos estrofas. Puedes encontrar la letra completa en nuestra sección dedicada con todas las versiones: tradicional, corta, para niños, y con opciones de descarga en PDF.",
   },
   {
     question: "¿Cuándo se cantan Las Mañanitas: en la mañana o en la noche?",
-    answer: "Tradicionalmente, Las Mañanitas se cantan en la madrugada o muy temprano en la mañana del día del cumpleaños, de ahí su nombre. Sin embargo, en la práctica moderna mexicana, se cantan en cualquier momento del día en que se corte el pastel: puede ser en el desayuno, comida, o incluso en la noche. Lo importante es la intención de celebrar a la persona homenajeada.",
+    answer:
+      "Tradicionalmente, Las Mañanitas se cantan en la madrugada o muy temprano en la mañana del día del cumpleaños, de ahí su nombre. Sin embargo, en la práctica moderna mexicana, se cantan en cualquier momento del día en que se corte el pastel: puede ser en el desayuno, comida, o incluso en la noche. Lo importante es la intención de celebrar a la persona homenajeada.",
   },
   {
     question: "¿Las Mañanitas son exclusivas de México?",
-    answer: "Aunque Las Mañanitas son una tradición profundamente mexicana, versiones similares existen en algunos países de Centroamérica como Guatemala. Sin embargo, la versión mexicana es la más elaborada y reconocida internacionalmente. Otros países latinoamericanos tienen sus propias canciones de cumpleaños, generalmente adaptaciones del 'Happy Birthday' en español.",
+    answer:
+      "Aunque Las Mañanitas son una tradición profundamente mexicana, versiones similares existen en algunos países de Centroamérica como Guatemala. Sin embargo, la versión mexicana es la más elaborada y reconocida internacionalmente. Otros países latinoamericanos tienen sus propias canciones de cumpleaños, generalmente adaptaciones del 'Happy Birthday' en español.",
   },
   {
     question: "¿Quién compuso Las Mañanitas?",
-    answer: "No existe un único compositor de Las Mañanitas. La canción es una evolución de tradiciones musicales españolas (albadas y madrigales) que llegaron a México durante la colonia. El compositor Manuel M. Ponce (1882-1948) es reconocido por formalizar y estandarizar la versión que conocemos hoy, dándole estructura musical definitiva como parte del movimiento nacionalista mexicano.",
+    answer:
+      "No existe un único compositor de Las Mañanitas. La canción es una evolución de tradiciones musicales españolas (albadas y madrigales) que llegaron a México durante la colonia. El compositor Manuel M. Ponce (1882-1948) es reconocido por formalizar y estandarizar la versión que conocemos hoy, dándole estructura musical definitiva como parte del movimiento nacionalista mexicano.",
   },
 ];
 ---
@@ -65,8 +71,13 @@ const faqs = [
     <section class="py-24 px-4 sm:px-6 lg:px-8 bg-white/30">
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-12">
-          <h2 class="text-5xl font-black text-slate-900 mb-4 tracking-tight flex items-center justify-center gap-3">
-            <Icon name="noto:red-question-mark" class="w-12 h-12" /> Preguntas Frecuentes
+          <h2
+            class="text-3xl sm:text-5xl font-black text-slate-900 mb-4 tracking-tight flex items-center justify-center gap-3"
+          >
+            <Icon
+              name="noto:red-question-mark"
+              class="w-10 h-10 sm:w-12 sm:h-12"
+            /> Preguntas Frecuentes
           </h2>
           <p class="text-xl text-slate-500 font-medium">
             Todo lo que siempre quisiste saber sobre Las Mañanitas
@@ -83,8 +94,11 @@ const faqs = [
           class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
         >
           <div>
-            <h2 class="text-5xl font-black text-slate-900 mb-4 tracking-tight flex items-center gap-3">
-              <Icon name="noto:shortcake" class="w-12 h-12" /> ¿Ya sabías esto?
+            <h2
+              class="text-3xl sm:text-5xl font-black text-slate-900 mb-4 tracking-tight flex items-center gap-3"
+            >
+              <Icon name="noto:shortcake" class="w-10 h-10 sm:w-12 sm:h-12" /> ¿Ya
+              sabías esto?
             </h2>
             <p class="text-xl text-slate-500 font-medium">
               Curiosidades, historia y mitos sobre nuestra canción favorita.
@@ -110,9 +124,14 @@ const faqs = [
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {
-            (await getCollection("articulos", ({ data }) => data.draft !== true))
+            (
+              await getCollection(
+                "articulos",
+                ({ data }) => data.draft !== true,
+              )
+            )
               .sort(
-                (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+                (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
               )
               .slice(0, 3)
               .map((post) => (
@@ -170,7 +189,9 @@ const faqs = [
     <!-- Footer -->
     <footer class="py-16 px-4 border-t border-slate-200">
       <div class="max-w-6xl mx-auto text-center">
-        <p class="text-2xl font-black text-slate-900 mb-4 flex items-center justify-center gap-2">
+        <p
+          class="text-2xl font-black text-slate-900 mb-4 flex items-center justify-center gap-2"
+        >
           <Icon name="noto:birthday-cake" class="w-6 h-6" /> Las Mañanitas
         </p>
         <p class="text-slate-500 font-medium mb-8">
@@ -193,9 +214,12 @@ const faqs = [
             >TikTok</a
           >
         </div>
-        <p class="text-slate-400 text-sm font-medium flex items-center justify-center gap-1">
+        <p
+          class="text-slate-400 text-sm font-medium flex items-center justify-center gap-1"
+        >
           &copy; {new Date().getFullYear()} Las Mañanitas - El Debate Definitivo.
-          Hecho con <Icon name="noto:red-heart" class="w-4 h-4 inline" /> y mucha confusión.
+          Hecho con <Icon name="noto:red-heart" class="w-4 h-4 inline" /> y mucha
+          confusión.
         </p>
       </div>
     </footer>

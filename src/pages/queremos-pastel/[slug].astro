@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { Icon } from 'astro-icon/components'
+import { Icon } from "astro-icon/components";
 import Layout from "../../layouts/Layout.astro";
 import VoteCTA from "../../components/VoteCTA.astro";
 import FloatingVote from "../../components/FloatingVote.astro";
@@ -44,7 +44,8 @@ const currentUrl = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
 <Layout
-  title={entry.data.seoTitle || `${entry.data.title} | Historia de Las Mañanitas - ¡Queremos Pastel!`}
+  title={entry.data.seoTitle ||
+    `${entry.data.title} | Historia de Las Mañanitas - ¡Queremos Pastel!`}
   description={entry.data.description}
   image={entry.data.image}
   article={{
@@ -92,7 +93,9 @@ const currentUrl = new URL(Astro.url.pathname, Astro.site).toString();
         </p>
 
         <!-- Reading time -->
-        <div class="mt-4 flex items-center gap-2 text-sm text-slate-400 font-medium">
+        <div
+          class="mt-4 flex items-center gap-2 text-sm text-slate-400 font-medium"
+        >
           <svg
             class="w-4 h-4"
             fill="none"
@@ -120,13 +123,13 @@ const currentUrl = new URL(Astro.url.pathname, Astro.site).toString();
       </div>
 
       <div
-        class="prose prose-slate prose-xl max-w-none
+        class="prose prose-slate prose-base sm:prose-xl max-w-none
         prose-headings:font-black prose-headings:text-slate-900 prose-headings:tracking-tight
         prose-p:text-slate-600 prose-p:leading-relaxed
         prose-strong:text-slate-900 prose-strong:font-bold
         prose-a:text-pink-600 prose-a:no-underline hover:prose-a:underline
         prose-li:text-slate-600
-        bg-white/40 backdrop-blur-md border border-white/40 rounded-[3rem] p-10 sm:p-16 shadow-2xl shadow-pink-200/10"
+        bg-white/40 backdrop-blur-md border border-white/40 rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-16 shadow-2xl shadow-pink-200/10"
       >
         <Content />
       </div>
