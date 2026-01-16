@@ -5,6 +5,7 @@ seoTitle: "Las Mañanitas Letra Completa (PDF Gratis) | Todas las Versiones 2026
 pubDate: 2026-01-16
 emoji: "📄"
 draft: true
+redirectTo: "/letra"
 ---
 
 ## La letra que todo México debería conocer

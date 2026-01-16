@@ -12,6 +12,7 @@ const articulos = defineCollection({
     image: z.string().optional(),
     seoTitle: z.string().optional(),
     draft: z.boolean().default(false),
+    redirectTo: z.string().optional(),
   }),
 });
 
