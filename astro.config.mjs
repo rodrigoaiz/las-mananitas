@@ -10,6 +10,11 @@ export default defineConfig({
   site: 'https://las-mananitas.vercel.app',
   trailingSlash: 'always',
   
+  redirects: {
+    '/queremos-pastel/las-mananitas-letra-completa-pdf': '/letra',
+    '/queremos-pastel/las-mananitas-para-ninos': '/letra'
+  },
+  
   vite: {
     plugins: [tailwindcss()]
   },

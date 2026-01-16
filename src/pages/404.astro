@@ -1,0 +1,112 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Página No Encontrada (404) | Las Mañanitas"
+  description="La página que buscas no existe. Regresa al debate más viral de México."
+>
+  <main class="min-h-screen flex items-center justify-center px-4 py-20">
+    <div class="max-w-2xl mx-auto text-center">
+      <!-- Emoji triste animado -->
+      <div class="text-9xl mb-8 animate-bounce">
+        🎂😢
+      </div>
+
+      <!-- Error 404 -->
+      <h1
+        class="text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-red-600 mb-6"
+      >
+        404
+      </h1>
+
+      <!-- Mensaje con humor -->
+      <h2 class="text-4xl font-bold text-slate-900 mb-4">
+        ¡Ups! Esta página se fue a cantar las mañanitas a otro lado
+      </h2>
+
+      <p class="text-xl text-slate-600 mb-8 max-w-lg mx-auto">
+        Parece que esta página desapareció más rápido que el pastel en una
+        fiesta mexicana. Pero no te preocupes, ¡tenemos muchas otras páginas
+        deliciosas para ti!
+      </p>
+
+      <!-- Call to action buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+        <a
+          href="/"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-pink-600 to-red-600 text-white font-bold rounded-full hover:scale-105 transition-transform shadow-lg hover:shadow-xl"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+            ></path>
+          </svg>
+          Ir al Inicio
+        </a>
+
+        <a
+          href="/queremos-pastel"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-pink-600 font-bold rounded-full border-4 border-pink-600 hover:bg-pink-50 transition-colors"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+            ></path>
+          </svg>
+          Ver Artículos
+        </a>
+      </div>
+
+      <!-- Fun fact o datos curiosos -->
+      <div
+        class="max-w-xl mx-auto p-6 bg-gradient-to-br from-pink-50 to-red-50 rounded-2xl border-2 border-pink-200"
+      >
+        <p class="text-lg font-bold text-slate-800 mb-2">
+          💡 ¿Sabías que...?
+        </p>
+        <p class="text-slate-600">
+          Mientras encuentras lo que buscabas, el debate sigue: <strong
+            >más del 60% de los mexicanos prefiere decir "tu cumpleaños"</strong
+          > en lugar de "día de tu santo". <a
+            href="/#survey"
+            class="text-pink-600 font-bold hover:underline"
+            >¡Vota tú también!</a
+          >
+        </p>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-25px);
+    }
+  }
+
+  .animate-bounce {
+    animation: bounce 2s ease-in-out infinite;
+  }
+</style>

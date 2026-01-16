@@ -8,7 +8,9 @@ import RelatedArticles from "../../components/RelatedArticles";
 import ShareButtons from "../../components/ShareButtons";
 
 export async function getStaticPaths() {
-  const articulos = await getCollection("articulos");
+  const articulos = await getCollection("articulos", ({ data }) => {
+    return data.draft !== true;
+  });
   return articulos.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },

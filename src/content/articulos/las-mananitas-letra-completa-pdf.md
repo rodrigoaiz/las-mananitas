@@ -4,6 +4,7 @@ description: "Lee la letra COMPLETA de Las Mañanitas original mexicana. Descarg
 seoTitle: "Las Mañanitas Letra Completa (PDF Gratis) | Todas las Versiones 2026"
 pubDate: 2026-01-16
 emoji: "📄"
+draft: true
 ---
 
 ## La letra que todo México debería conocer

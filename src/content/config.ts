@@ -11,6 +11,7 @@ const articulos = defineCollection({
     author: z.string().default('El Tío Mañanitas'),
     image: z.string().optional(),
     seoTitle: z.string().optional(),
+    draft: z.boolean().default(false),
   }),
 });
 
