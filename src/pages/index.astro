@@ -6,6 +6,34 @@ import Survey from "../components/Survey";
 import Statistics from "../components/Statistics";
 import VideoGallery from "../components/VideoGallery.astro";
 import Testimonials from "../components/Testimonials";
+import FAQ from "../components/FAQ";
+
+const faqs = [
+  {
+    question: "¿Se dice 'día de tu santo' o 'tu cumpleaños' en Las Mañanitas?",
+    answer: "Ambas versiones son correctas. 'Día de tu santo' es la letra tradicional histórica, mientras que 'tu cumpleaños' es la adaptación moderna más común. La controversia existe porque en México la tradición del santoral (celebrar el día del santo patrono de tu nombre) coexistió con la celebración del cumpleaños biológico. Hoy en día, la mayoría usa 'cumpleaños' pero la versión con 'santo' sigue siendo válida y respetada.",
+  },
+  {
+    question: "¿Quién es el Rey David que se menciona en Las Mañanitas?",
+    answer: "El Rey David es el famoso monarca bíblico conocido por escribir los Salmos y por ser un músico talentoso. La tradición cuenta que David cantaba alabanzas al amanecer, de ahí la conexión con 'las mañanitas'. La mención en la canción es una referencia cultural que mezcla la tradición religiosa española con el folklore mexicano, consolidada por el compositor Manuel M. Ponce a principios del siglo XX.",
+  },
+  {
+    question: "¿Cuál es la letra completa original de Las Mañanitas?",
+    answer: "La versión original completa tiene 4-6 estrofas según la región, comenzando con 'Estas son las mañanitas que cantaba el Rey David...' seguida de 'Despierta, mi bien, despierta...'. La mayoría solo canta las primeras dos estrofas. Puedes encontrar la letra completa en nuestra sección dedicada con todas las versiones: tradicional, corta, para niños, y con opciones de descarga en PDF.",
+  },
+  {
+    question: "¿Cuándo se cantan Las Mañanitas: en la mañana o en la noche?",
+    answer: "Tradicionalmente, Las Mañanitas se cantan en la madrugada o muy temprano en la mañana del día del cumpleaños, de ahí su nombre. Sin embargo, en la práctica moderna mexicana, se cantan en cualquier momento del día en que se corte el pastel: puede ser en el desayuno, comida, o incluso en la noche. Lo importante es la intención de celebrar a la persona homenajeada.",
+  },
+  {
+    question: "¿Las Mañanitas son exclusivas de México?",
+    answer: "Aunque Las Mañanitas son una tradición profundamente mexicana, versiones similares existen en algunos países de Centroamérica como Guatemala. Sin embargo, la versión mexicana es la más elaborada y reconocida internacionalmente. Otros países latinoamericanos tienen sus propias canciones de cumpleaños, generalmente adaptaciones del 'Happy Birthday' en español.",
+  },
+  {
+    question: "¿Quién compuso Las Mañanitas?",
+    answer: "No existe un único compositor de Las Mañanitas. La canción es una evolución de tradiciones musicales españolas (albadas y madrigales) que llegaron a México durante la colonia. El compositor Manuel M. Ponce (1882-1948) es reconocido por formalizar y estandarizar la versión que conocemos hoy, dándole estructura musical definitiva como parte del movimiento nacionalista mexicano.",
+  },
+];
 ---
 
 <Layout
@@ -30,6 +58,21 @@ import Testimonials from "../components/Testimonials";
     <!-- Testimonials Section -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <Testimonials client:load initialLimit={3} />
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-white/30">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-5xl font-black text-slate-900 mb-4 tracking-tight">
+            ❓ Preguntas Frecuentes
+          </h2>
+          <p class="text-xl text-slate-500 font-medium">
+            Todo lo que siempre quisiste saber sobre Las Mañanitas
+          </p>
+        </div>
+        <FAQ faqs={faqs} client:load />
+      </div>
     </section>
 
     <!-- Content / Blog Section for SEO -->

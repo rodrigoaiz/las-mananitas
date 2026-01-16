@@ -3,13 +3,12 @@ title: "¿De dónde salieron Las Mañanitas? El origen de un género"
 description: "Desde cortes europeas del siglo XVI hasta México 2026: la sorprendente evolución de la canción más cantada del país. Te va a sorprender."
 seoTitle: "El Verdadero Origen de Las Mañanitas Que NO Conocías (Historia Completa)"
 pubDate: 2026-01-08
+dateModified: 2026-01-16
+image: "/images/articulos/musicos-coloniales.webp"
 emoji: "📜"
 ---
 
 Aunque parezca que **Las Mañanitas** han existido desde que el primer mexicano cumplió años, la realidad es que su historia es un mosaico de influencias que se remontan a varios siglos atrás. No nacieron como una composición única, sino como una evolución de estilos musicales que cruzaron el Atlántico.
-
-![Ilustración de músicos tradicionales](/images/articulos/musicos-coloniales.webp)
-*La música en la Nueva España era un puente constante entre las tradiciones europeas y la nueva identidad mestiza.*
 
 ## 1. De las Albadas a las Mañanitas
 

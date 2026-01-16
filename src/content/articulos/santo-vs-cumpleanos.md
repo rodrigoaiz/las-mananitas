@@ -3,15 +3,14 @@ title: "Santo vs. Cumpleaños: El gran cisma de la canción"
 description: "¿Por qué México se divide en 2 bandos al cantar Las Mañanitas? Descubre la historia detrás del debate más antiguo de las fiestas mexicanas."
 seoTitle: "¿Santo o Cumpleaños? El Debate de Las Mañanitas Explicado | Historia Real"
 pubDate: 2026-01-08
+dateModified: 2026-01-16
+image: "/images/articulos/santo-vs-cumpleanos.svg"
 emoji: "⚔️"
 ---
 
 # La Raíz de la Discordia: ¿Qué estamos celebrando realmente?
 
 Si alguna vez has estado en medio de un coro de mañanitas y has sentido ese momento de pánico donde no sabes si gritar *"hoy por ser día de tu santo"* o *"hoy por ser tu cumpleaños"*, no estás solo. Este pequeño choque de palabras es en realidad el reflejo de un cambio cultural profundo en la historia de México.
-
-![Ilustración comparativa de Santo vs Cumpleaños](/images/articulos/santo-vs-cumpleanos.svg)
-*Durante siglos, la música fue el cronómetro de la vida social y religiosa en los pueblos de México.*
 
 ## 1. El Santoral: Cuando el nombre era el destino
 

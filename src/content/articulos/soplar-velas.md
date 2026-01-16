@@ -2,6 +2,8 @@
 title: "¿Por qué pedimos un deseo y apagamos velas?"
 description: "Del humo ritual a la mesa del comedor: el origen simbólico del deseo de cumpleaños."
 pubDate: 2026-01-07
+dateModified: 2026-01-16
+image: "/images/articulos/sopla-velas.webp"
 emoji: "🎂"
 ---
 

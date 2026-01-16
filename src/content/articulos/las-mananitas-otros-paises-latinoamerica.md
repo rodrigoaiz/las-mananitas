@@ -10,8 +10,6 @@ emoji: "🌎"
 
 Si pensabas que solo en México existía el drama de qué cantar en los cumpleaños, te tenemos noticias: **cada país latinoamericano tiene su propia versión** y sus propios debates. Algunos copian "Happy Birthday" en inglés, otros tienen tradiciones centenarias, y unos cuantos tienen canciones que harían sonrojar a cualquiera.
 
-![Mapa de Latinoamérica con canciones de cumpleaños](/images/articulos/mapa-latinoamerica.webp)
-
 ## 🇲🇽 México: Las Mañanitas (La Original)
 
 **Versión:** Completa con Rey David  

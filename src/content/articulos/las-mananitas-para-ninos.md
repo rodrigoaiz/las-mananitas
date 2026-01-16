@@ -10,8 +10,6 @@ emoji: "🎈"
 
 ¿Necesitas enseñar Las Mañanitas a niños de preescolar o primaria? Esta versión simplificada es perfecta para festivales escolares, cumpleaños infantiles y celebraciones del Día de las Madres.
 
-![Niños cantando Las Mañanitas](/images/articulos/ninos-cantando.webp)
-
 ## Letra Simplificada (5-7 años)
 
 Esta es la versión más **fácil de memorizar** para niños pequeños:

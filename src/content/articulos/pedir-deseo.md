@@ -2,6 +2,8 @@
 title: "Pedir un deseo y apagar las velas: un ritual mínimo en un mundo que ya no se detiene"
 description: "Infancia, consumo y el último instante mágico que todavía nos permitimos."
 pubDate: 2026-01-07
+dateModified: 2026-01-16
+image: "/images/articulos/deseo.webp"
 emoji: "🕯"
 ---
 

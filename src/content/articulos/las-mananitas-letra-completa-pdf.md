@@ -10,8 +10,6 @@ emoji: "📄"
 
 ¿Cuántas veces has llegado a ese momento incómodo donde todos cantan Las Mañanitas pero nadie sabe qué sigue después de "despierta, mi bien, despierta"? Aquí está la **letra completa** de la versión más tradicional, perfecta para imprimirla y tenerla lista en tu próxima fiesta.
 
-![Letra impresa de Las Mañanitas](/images/articulos/letra-completa.webp)
-
 ## Versión Tradicional Completa
 
 **Primera estrofa:**
