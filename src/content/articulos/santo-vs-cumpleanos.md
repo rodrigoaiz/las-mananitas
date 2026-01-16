@@ -1,6 +1,7 @@
 ---
 title: "Santo vs. Cumpleaños: El gran cisma de la canción"
-description: "¿Por qué algunos se aferran al santo y otros al pastel? La historia detrás de las dos versiones más cantadas de México."
+description: "¿Por qué México se divide en 2 bandos al cantar Las Mañanitas? Descubre la historia detrás del debate más antiguo de las fiestas mexicanas."
+seoTitle: "¿Santo o Cumpleaños? El Debate de Las Mañanitas Explicado | Historia Real"
 pubDate: 2026-01-08
 emoji: "⚔️"
 ---

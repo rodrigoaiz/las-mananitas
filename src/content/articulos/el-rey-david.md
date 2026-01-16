@@ -1,6 +1,7 @@
 ---
 title: "¿Quién era el Rey David y por qué protagoniza nuestras mañanitas?"
-description: "Del folklore español al nacionalismo mexicano: la historia de cómo un antiguo monarca terminó en tu pastel."
+description: "¿Quién es el Rey David de Las Mañanitas? La verdad detrás de la referencia bíblica más cantada en México (y por qué todos se equivocan)."
+seoTitle: "Rey David en Las Mañanitas: ¿Quién Es y Por Qué Aparece en la Canción?"
 pubDate: 2026-01-07
 emoji: "👑"
 ---

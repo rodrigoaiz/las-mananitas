@@ -5,6 +5,7 @@ interface Props {
   image?: string;
   article?: {
     publishedTime?: string;
+    modifiedTime?: string;
     authorName?: string;
   };
 }
@@ -23,21 +24,40 @@ import Header from "../components/Header.astro";
 import "../styles/global.css";
 
 // JSON-LD Structured Data
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": article ? "Article" : "WebSite",
-  name: title,
-  description: description,
-  url: canonicalURL.toString(),
-  image: socialImageURL.toString(),
-  ...(article && {
-    datePublished: article.publishedTime,
-    author: {
-      "@type": "Person",
-      name: article.authorName || "El Tío Mañanitas",
-    },
-  }),
-};
+const jsonLd = article
+  ? {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: title,
+      description: description,
+      image: socialImageURL.toString(),
+      datePublished: article.publishedTime,
+      dateModified: article.modifiedTime || article.publishedTime,
+      author: {
+        "@type": "Person",
+        name: article.authorName || "El Tío Mañanitas",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Las Mañanitas - El Gran Debate",
+        logo: {
+          "@type": "ImageObject",
+          url: new URL("/favicon.png", Astro.site).toString(),
+        },
+      },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": canonicalURL.toString(),
+      },
+    }
+  : {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: title,
+      description: description,
+      url: canonicalURL.toString(),
+      image: socialImageURL.toString(),
+    };
 
 const clarityId = "uybpd1j3wm";
 ---

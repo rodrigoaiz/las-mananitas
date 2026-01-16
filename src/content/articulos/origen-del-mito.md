@@ -1,6 +1,7 @@
 ---
 title: "¿De dónde salieron Las Mañanitas? El origen de un género"
-description: "Un viaje al pasado para entender la evolución de un canto que pasó de las cortes europeas a las plazas mexicanas."
+description: "Desde cortes europeas del siglo XVI hasta México 2026: la sorprendente evolución de la canción más cantada del país. Te va a sorprender."
+seoTitle: "El Verdadero Origen de Las Mañanitas Que NO Conocías (Historia Completa)"
 pubDate: 2026-01-08
 emoji: "📜"
 ---

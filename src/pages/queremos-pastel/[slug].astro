@@ -3,6 +3,9 @@ import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import VoteCTA from "../../components/VoteCTA.astro";
 import FloatingVote from "../../components/FloatingVote.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import RelatedArticles from "../../components/RelatedArticles";
+import ShareButtons from "../../components/ShareButtons";
 
 export async function getStaticPaths() {
   const articulos = await getCollection("articulos");
@@ -14,18 +17,44 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+const breadcrumbItems = [
+  { label: "Inicio", href: "/" },
+  { label: "¡Queremos Pastel!", href: "/queremos-pastel/" },
+  { label: entry.data.title, href: "#" },
+];
+
+// Get all articles for related articles
+const allArticles = await getCollection("articulos");
+const relatedArticlesData = allArticles.map((a) => ({
+  title: a.data.title,
+  description: a.data.description,
+  emoji: a.data.emoji,
+  slug: a.slug,
+}));
+
+// Calculate reading time (aproximadamente 200 palabras por minuto)
+const wordCount = entry.body.split(/\s+/).length;
+const readingTime = Math.ceil(wordCount / 200);
+
+const currentUrl = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
 <Layout
-  title={`${entry.data.title} | Historia de Las Mañanitas - ¡Queremos Pastel!`}
+  title={entry.data.seoTitle || `${entry.data.title} | Historia de Las Mañanitas - ¡Queremos Pastel!`}
   description={entry.data.description}
+  image={entry.data.image}
   article={{
     publishedTime: entry.data.pubDate.toISOString(),
+    modifiedTime: entry.data.dateModified?.toISOString(),
     authorName: entry.data.author,
   }}
 >
   <main class="py-20 px-4 sm:px-6 lg:px-8">
     <article class="max-w-3xl mx-auto">
+      <!-- Breadcrumbs -->
+      <Breadcrumbs items={breadcrumbItems} />
+
       <!-- Back button -->
       <a
         href="/queremos-pastel"
@@ -59,6 +88,23 @@ const { Content } = await entry.render();
           {entry.data.description}
         </p>
 
+        <!-- Reading time -->
+        <div class="mt-4 flex items-center gap-2 text-sm text-slate-400 font-medium">
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>{readingTime} min de lectura</span>
+        </div>
+
         <!-- Subtle top CTA -->
         <div class="mt-8 flex justify-center">
           <a
@@ -82,7 +128,19 @@ const { Content } = await entry.render();
         <Content />
       </div>
 
+      <!-- Share buttons -->
+      <div class="mt-12 flex justify-center">
+        <ShareButtons url={currentUrl} title={entry.data.title} client:load />
+      </div>
+
       <VoteCTA />
+
+      <!-- Related articles -->
+      <RelatedArticles
+        currentSlug={entry.slug}
+        articles={relatedArticlesData}
+        client:load
+      />
 
       <div class="mt-20 text-center border-t border-slate-200 pt-12">
         <p class="text-slate-400 font-medium">

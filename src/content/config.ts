@@ -6,9 +6,11 @@ const articulos = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.date(),
+    dateModified: z.date().optional(),
     emoji: z.string(),
     author: z.string().default('El Tío Mañanitas'),
     image: z.string().optional(),
+    seoTitle: z.string().optional(),
   }),
 });
 
