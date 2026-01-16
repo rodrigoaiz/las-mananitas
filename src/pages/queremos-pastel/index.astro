@@ -4,7 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import VoteCTA from "../../components/VoteCTA.astro";
 import FloatingVote from "../../components/FloatingVote.astro";
 
-const posts = await getCollection("articulos");
+const posts = await getCollection("articulos", ({ data }) => data.draft !== true);
 // Sort by date descending
 posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
