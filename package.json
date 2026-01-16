@@ -11,15 +11,17 @@
   "dependencies": {
     "@astrojs/react": "^4.4.2",
     "@astrojs/sitemap": "^3.6.1",
+    "@iconify-json/noto": "^1.2.7",
+    "@iconify-json/twemoji": "^1.2.5",
     "@supabase/supabase-js": "^2.89.0",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.18",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "astro": "^5.16.6",
+    "astro-icon": "^1.1.5",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "tailwindcss": "^4.1.18",
-    "twemoji": "^14.0.2"
+    "tailwindcss": "^4.1.18"
   }
 }

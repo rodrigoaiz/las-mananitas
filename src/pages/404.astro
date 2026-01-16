@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components'
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -9,8 +10,9 @@ import Layout from "../layouts/Layout.astro";
   <main class="min-h-screen flex items-center justify-center px-4 py-20">
     <div class="max-w-2xl mx-auto text-center">
       <!-- Emoji triste animado -->
-      <div class="text-9xl mb-8 animate-bounce">
-        🎂😢
+      <div class="text-9xl mb-8 animate-bounce flex items-center justify-center gap-2">
+        <Icon name="noto:birthday-cake" class="w-32 h-32" />
+        <Icon name="noto:sad-but-relieved-face" class="w-32 h-32" />
       </div>
 
       <!-- Error 404 -->
@@ -78,8 +80,8 @@ import Layout from "../layouts/Layout.astro";
       <div
         class="max-w-xl mx-auto p-6 bg-gradient-to-br from-pink-50 to-red-50 rounded-2xl border-2 border-pink-200"
       >
-        <p class="text-lg font-bold text-slate-800 mb-2">
-          💡 ¿Sabías que...?
+        <p class="text-lg font-bold text-slate-800 mb-2 flex items-center justify-center gap-2">
+          <Icon name="noto:light-bulb" class="w-6 h-6" /> ¿Sabías que...?
         </p>
         <p class="text-slate-600">
           Mientras encuentras lo que buscabas, el debate sigue: <strong

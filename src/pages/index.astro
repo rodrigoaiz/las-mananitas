@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { Icon } from 'astro-icon/components'
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import Survey from "../components/Survey";
@@ -64,8 +65,8 @@ const faqs = [
     <section class="py-24 px-4 sm:px-6 lg:px-8 bg-white/30">
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-12">
-          <h2 class="text-5xl font-black text-slate-900 mb-4 tracking-tight">
-            ❓ Preguntas Frecuentes
+          <h2 class="text-5xl font-black text-slate-900 mb-4 tracking-tight flex items-center justify-center gap-3">
+            <Icon name="noto:red-question-mark" class="w-12 h-12" /> Preguntas Frecuentes
           </h2>
           <p class="text-xl text-slate-500 font-medium">
             Todo lo que siempre quisiste saber sobre Las Mañanitas
@@ -82,8 +83,8 @@ const faqs = [
           class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
         >
           <div>
-            <h2 class="text-5xl font-black text-slate-900 mb-4 tracking-tight">
-              🍰 ¿Ya sabías esto?
+            <h2 class="text-5xl font-black text-slate-900 mb-4 tracking-tight flex items-center gap-3">
+              <Icon name="noto:shortcake" class="w-12 h-12" /> ¿Ya sabías esto?
             </h2>
             <p class="text-xl text-slate-500 font-medium">
               Curiosidades, historia y mitos sobre nuestra canción favorita.
@@ -169,7 +170,9 @@ const faqs = [
     <!-- Footer -->
     <footer class="py-16 px-4 border-t border-slate-200">
       <div class="max-w-6xl mx-auto text-center">
-        <p class="text-2xl font-black text-slate-900 mb-4">🎂 Las Mañanitas</p>
+        <p class="text-2xl font-black text-slate-900 mb-4 flex items-center justify-center gap-2">
+          <Icon name="noto:birthday-cake" class="w-6 h-6" /> Las Mañanitas
+        </p>
         <p class="text-slate-500 font-medium mb-8">
           Un experimento social para resolver el debate más grande de México.
         </p>
@@ -190,9 +193,9 @@ const faqs = [
             >TikTok</a
           >
         </div>
-        <p class="text-slate-400 text-sm font-medium">
+        <p class="text-slate-400 text-sm font-medium flex items-center justify-center gap-1">
           &copy; {new Date().getFullYear()} Las Mañanitas - El Debate Definitivo.
-          Hecho con ❤️ y mucha confusión.
+          Hecho con <Icon name="noto:red-heart" class="w-4 h-4 inline" /> y mucha confusión.
         </p>
       </div>
     </footer>
