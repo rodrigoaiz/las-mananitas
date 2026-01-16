@@ -5,6 +5,7 @@ seoTitle: "Las Mañanitas para Niños (Letra Fácil) | Versión Escolar 2026"
 pubDate: 2026-01-16
 emoji: "🎈"
 draft: true
+redirectTo: "/letra"
 ---
 
 ## La versión perfecta para los más pequeños

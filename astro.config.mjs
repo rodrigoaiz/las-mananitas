@@ -8,6 +8,7 @@ import react from '@astrojs/react';
 
 // Generate redirects from draft articles
 const articulos = await getCollection('articulos');
+/** @type {Record<string, string>} */
 const autoRedirects = {};
 articulos.forEach(article => {
   if (article.data.draft && article.data.redirectTo) {
