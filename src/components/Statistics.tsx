@@ -5,6 +5,14 @@ import {
   type VoteVersion,
 } from "../lib/supabase";
 
+// Número base para prueba social (se suma a los votos reales)
+const BASE_VOTES = 10000;
+const BASE_DISTRIBUTION = {
+  "hoy-por-ser-tu-cumpleaños": 6200,
+  "hoy-por-ser-dia-de-tu-santo": 3100,
+  "otras-variaciones": 700,
+};
+
 const versionLabels: Record<
   VoteVersion,
   { label: string; emoji: string; color: string }
@@ -112,9 +120,18 @@ export default function Statistics() {
     .sort(([, a], [, b]) => b - a)
     .map(([version]) => version as VoteVersion);
 
+  // Aplicar número base a las estadísticas
+  const displayTotalVotes = stats.totalVotes + BASE_VOTES;
+  const displayVersionCounts = Object.fromEntries(
+    Object.entries(stats.versionCounts).map(([version, count]) => [
+      version,
+      count + (BASE_DISTRIBUTION[version as VoteVersion] || 0),
+    ])
+  ) as Record<VoteVersion, number>;
+
   const getPercentage = (count: number) => {
-    if (stats.totalVotes === 0) return 0;
-    return Math.round((count / stats.totalVotes) * 100);
+    if (displayTotalVotes === 0) return 0;
+    return Math.round((count / displayTotalVotes) * 100);
   };
 
   return (
@@ -133,17 +150,18 @@ export default function Statistics() {
             Total de votos registrados
           </p>
           <p className="text-8xl sm:text-9xl font-black bg-gradient-to-r from-pink-600 via-orange-500 to-yellow-500 bg-clip-text text-transparent transform hover:scale-105 transition-transform duration-500">
-            {stats.totalVotes.toLocaleString()}
+            {displayTotalVotes.toLocaleString()}
           </p>
         </div>
 
         {/* Results */}
         <div className="space-y-8">
           {sortedVersions.map((version, index) => {
-            const count = stats.versionCounts[version];
+            const realCount = stats.versionCounts[version];
+            const count = displayVersionCounts[version];
             const percentage = getPercentage(count);
             const versionInfo = versionLabels[version];
-            const isWinner = index === 0 && stats.totalVotes > 0;
+            const isWinner = index === 0 && displayTotalVotes > 0;
 
             return (
               <div
