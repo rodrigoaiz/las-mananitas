@@ -13,11 +13,17 @@ interface Props {
 }
 
 export default function RelatedArticles({ currentSlug, articles }: Props) {
-  // Filter out current article and get random 3
-  const relatedArticles = articles
-    .filter((article) => article.slug !== currentSlug)
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 3);
+  const [relatedArticles, setRelatedArticles] = useState<RelatedArticle[]>([]);
+  
+  useEffect(() => {
+    // Filter out current article and get random 3
+    const filtered = articles
+      .filter((article) => article.slug !== currentSlug)
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 3);
+    
+    setRelatedArticles(filtered);
+  }, [currentSlug, articles]);
 
   return (
     <section className="mt-20 border-t border-slate-200 pt-16">
