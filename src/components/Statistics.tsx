@@ -38,6 +38,11 @@ export default function Statistics() {
   const [stats, setStats] = useState<Statistics | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  const formatNum = (num: number) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
 
   const fetchStats = async () => {
     try {
@@ -54,8 +59,9 @@ export default function Statistics() {
   };
 
   useEffect(() => {
+    setIsMounted(true);
     fetchStats();
-
+    
     const handleVoteSubmitted = () => {
       setTimeout(fetchStats, 1000);
     };
@@ -67,21 +73,19 @@ export default function Statistics() {
     };
   }, []);
 
-  if (loading) {
+  // During hydration, we must render exactly what the server rendered (the skeleton)
+  if (!isMounted || loading) {
     return (
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          {/* Skeleton Title */}
           <div className="h-16 w-3/4 max-w-md bg-slate-200 animate-pulse mx-auto rounded-3xl mb-4"></div>
           <div className="h-6 w-1/2 max-w-sm bg-slate-100 animate-pulse mx-auto rounded-full mb-16"></div>
 
-          {/* Skeleton Total Votes */}
           <div className="text-center mb-16">
             <div className="h-6 w-32 bg-slate-100 animate-pulse mx-auto rounded-full mb-4"></div>
             <div className="h-24 w-48 bg-slate-200 animate-pulse mx-auto rounded-[2.5rem]"></div>
           </div>
 
-          {/* Skeleton Bars */}
           <div className="space-y-8">
             {[1, 2, 3].map((i) => (
               <div
@@ -120,13 +124,12 @@ export default function Statistics() {
     .sort(([, a], [, b]) => b - a)
     .map(([version]) => version as VoteVersion);
 
-  // Aplicar número base a las estadísticas
   const displayTotalVotes = stats.totalVotes + BASE_VOTES;
   const displayVersionCounts = Object.fromEntries(
     Object.entries(stats.versionCounts).map(([version, count]) => [
       version,
       count + (BASE_DISTRIBUTION[version as VoteVersion] || 0),
-    ]),
+    ])
   ) as Record<VoteVersion, number>;
 
   const getPercentage = (count: number) => {
@@ -144,20 +147,17 @@ export default function Statistics() {
           Así va el debate nacional hasta ahora...
         </p>
 
-        {/* Total votes */}
         <div className="text-center mb-20">
           <p className="text-slate-400 text-lg font-bold uppercase tracking-widest mb-2">
             Total de votos registrados
           </p>
           <p className="text-8xl sm:text-9xl font-black bg-gradient-to-r from-pink-600 via-orange-500 to-yellow-500 bg-clip-text text-transparent transform hover:scale-105 transition-transform duration-500">
-            {displayTotalVotes.toLocaleString("es-MX")}
+            {formatNum(displayTotalVotes)}
           </p>
         </div>
 
-        {/* Results */}
         <div className="space-y-8">
           {sortedVersions.map((version, index) => {
-            const realCount = stats.versionCounts[version];
             const count = displayVersionCounts[version];
             const percentage = getPercentage(count);
             const versionInfo = versionLabels[version];
@@ -176,7 +176,6 @@ export default function Statistics() {
                   }
                 `}
               >
-                {/* Winner Crown - Floating corner */}
                 {isWinner && (
                   <div className="absolute top-4 right-4 z-20">
                     <span
@@ -188,13 +187,11 @@ export default function Statistics() {
                   </div>
                 )}
 
-                {/* Background bar */}
                 <div
                   className={`absolute inset-0 bg-gradient-to-r ${versionInfo.color} opacity-10 transition-all duration-1000 ease-out`}
                   style={{ width: `${percentage}%` }}
                 />
 
-                {/* Content */}
                 <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
                   <div className="flex items-center gap-6 flex-1">
                     <span className="text-5xl drop-shadow-sm">
@@ -209,7 +206,7 @@ export default function Statistics() {
                         {versionInfo.label}
                       </h3>
                       <p className="text-lg text-slate-500 font-bold">
-                        {count.toLocaleString("es-MX")}{" "}
+                        {formatNum(count)}{" "}
                         {count === 1 ? "voto" : "votos"}
                       </p>
                     </div>
@@ -229,7 +226,6 @@ export default function Statistics() {
           })}
         </div>
 
-        {/* Dynamic Fun Facts (Rescued from TopVersions) */}
         <div className="mt-20 grid sm:grid-cols-2 gap-8">
           <div className="bg-white/60 backdrop-blur-md border border-white/40 rounded-3xl p-10 text-center shadow-lg hover:shadow-orange-200/20 transition-all duration-500">
             <p className="text-5xl mb-4">😅</p>
@@ -249,7 +245,6 @@ export default function Statistics() {
           </div>
         </div>
 
-        {/* Sincronización footer info */}
         <div className="mt-16 text-center">
           <p className="text-slate-400 text-sm font-medium inline-flex items-center gap-2 px-6 py-2 bg-slate-50 rounded-full border border-slate-100">
             <span className="flex h-2 w-2 rounded-full bg-green-500"></span>

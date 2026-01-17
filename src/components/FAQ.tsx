@@ -8,26 +8,8 @@ interface Props {
 }
 
 export default function FAQ({ faqs }: Props) {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <div className="space-y-6">
+    <div className="space-y-6">
         {faqs.map((faq, index) => (
           <details
             key={index}
@@ -55,6 +37,5 @@ export default function FAQ({ faqs }: Props) {
           </details>
         ))}
       </div>
-    </>
   );
 }
