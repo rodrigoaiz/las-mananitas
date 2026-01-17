@@ -55,7 +55,7 @@ export default function Statistics() {
 
   useEffect(() => {
     fetchStats();
-    
+
     const handleVoteSubmitted = () => {
       setTimeout(fetchStats, 1000);
     };
@@ -126,7 +126,7 @@ export default function Statistics() {
     Object.entries(stats.versionCounts).map(([version, count]) => [
       version,
       count + (BASE_DISTRIBUTION[version as VoteVersion] || 0),
-    ])
+    ]),
   ) as Record<VoteVersion, number>;
 
   const getPercentage = (count: number) => {
@@ -150,7 +150,7 @@ export default function Statistics() {
             Total de votos registrados
           </p>
           <p className="text-8xl sm:text-9xl font-black bg-gradient-to-r from-pink-600 via-orange-500 to-yellow-500 bg-clip-text text-transparent transform hover:scale-105 transition-transform duration-500">
-            {displayTotalVotes.toLocaleString()}
+            {displayTotalVotes.toLocaleString("es-MX")}
           </p>
         </div>
 
@@ -209,7 +209,7 @@ export default function Statistics() {
                         {versionInfo.label}
                       </h3>
                       <p className="text-lg text-slate-500 font-bold">
-                        {count.toLocaleString()}{" "}
+                        {count.toLocaleString("es-MX")}{" "}
                         {count === 1 ? "voto" : "votos"}
                       </p>
                     </div>

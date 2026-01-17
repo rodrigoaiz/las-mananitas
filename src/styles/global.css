@@ -54,7 +54,20 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom utilities */
+@keyframes bounce-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
 .hover\:scale-102:hover {
   transform: scale(1.02);
 }
